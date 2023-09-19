@@ -3,9 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package principal.controladores;
-import productos.modelos;
-
 import java.util.ArrayList;
+
 
 /**
  *
@@ -22,7 +21,7 @@ public class ControladorPrincipal {
         ArrayList<Producto> listaProductos = new ArrayList<>();
         /*Instanciar 3 objetos de cada clase y guardarlos en su correspondiente ArrayList. */
         Empleado e1=new Empleado();
-        Empleado e2 = new Empleado();
+        Empleado e2= new Empleado();
         Empleado e3= new Empleado();
         
         e1.apellido="Apellido1";

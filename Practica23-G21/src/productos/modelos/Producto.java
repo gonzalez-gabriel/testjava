@@ -9,13 +9,21 @@ package productos.modelos;
  * @author estudiante
  */
 public class Producto {
-    public String nombre;
-    public String descripcion;
-    public float precio;
-    public boolean estado;
-    public String tipo;
+    private String nombre;
+    private String descripcion;
+    private float precio;
+    private boolean estado;
+    private String tipo;
+
+    public Producto(String nombre, String descripcion, float precio, boolean estado, String tipo) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.estado = estado;
+        this.tipo = tipo;
+    }
     
-    void mostrar() {
+    public void mostrar() {
         System.out.println("Producto: " + nombre);
         System.out.println("Descripcion: " + descripcion);
         System.out.println("Precio: " + precio);
