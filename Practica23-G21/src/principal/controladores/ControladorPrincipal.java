@@ -4,6 +4,8 @@
  */
 package principal.controladores;
 import java.util.ArrayList;
+import productos.modelos.Producto;
+import usuarios.modelos.*;
 
 
 /**
@@ -20,7 +22,7 @@ public class ControladorPrincipal {
         ArrayList<Encargado> listaEncargados = new ArrayList<>();
         ArrayList<Producto> listaProductos = new ArrayList<>();
         /*Instanciar 3 objetos de cada clase y guardarlos en su correspondiente ArrayList. */
-        Empleado e1=new Empleado();
+        Empleado e1= new Empleado("clave1","Nombre1","Apellido1","empleado1@mail.com");
         Empleado e2= new Empleado();
         Empleado e3= new Empleado();
         

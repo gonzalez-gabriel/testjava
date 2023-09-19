@@ -9,23 +9,23 @@ package usuarios.modelos;
  * @author estudiante
  */
 public class Empleado {
-    private int clave;
+    private String clave;
     private String nombre;
     private String apellido;
     private String correo;
 
-    public Empleado(int clave, String nombre, String apellido, String correo) {
+    public Empleado(String clave, String nombre, String apellido, String correo) {
         this.clave = clave;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
     }
 
-    public int verClave() {
+    public String verClave() {
         return clave;
     }
 
-    public void asignarClave(int clave) {
+    public void asignarClave(String clave) {
         this.clave = clave;
     }
 
