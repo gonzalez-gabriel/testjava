@@ -1,2 +1,5 @@
+#Archivos de texto
 *.txt
+
+#Archivos de clase
 *.class
