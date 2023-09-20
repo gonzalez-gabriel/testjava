@@ -12,5 +12,6 @@ public class NewClass {
     int number= 3;
     String palabra= "gola";
     String unString = "que asco el git";
-    int huh = 3;
+    float jeje = 3f;
+    void mostrarxd (){}
 }
