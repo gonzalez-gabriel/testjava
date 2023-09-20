@@ -10,4 +10,5 @@ package newpackage2;
  */
 public class NewClass {
     int number= 3;
+    String palabra= "gola";
 }
