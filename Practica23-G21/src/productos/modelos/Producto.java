@@ -16,51 +16,52 @@ public class Producto {
     private boolean estado;
     private String tipo;
 
-    public Producto(String nombre, String descripcion, float precio, boolean estado, String tipo) {
+    public Producto(String nombre, int codigo, String descripcion, float precio, boolean estado, String tipo) {
         this.nombre = nombre;
+        this.codigo = codigo;
         this.descripcion = descripcion;
         this.precio = precio;
         this.estado = estado;
         this.tipo = tipo;
     }
 
-    public String getNombre() {
+    public String verNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
+    public String verDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
+    public void asignarDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public float getPrecio() {
+    public float verPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void asignarPrecio(float precio) {
         this.precio = precio;
     }
 
-    public boolean isEstado() {
+    public boolean verEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void asignarEstado(boolean estado) {
         this.estado = estado;
     }
 
-    public String getTipo() {
+    public String verTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void asignarTipo(String tipo) {
         this.tipo = tipo;
     }
 
