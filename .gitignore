@@ -3,5 +3,5 @@
 
 #Archivos de clase
 *.class
-
-*.xml
+/Practica23-G21/nbproject/private/
+/Practica23-G21/build/
