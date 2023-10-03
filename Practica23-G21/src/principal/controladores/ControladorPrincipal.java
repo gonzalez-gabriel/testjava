@@ -4,7 +4,7 @@
  */
 package principal.controladores;
 import java.util.ArrayList;
-import productos.modelos.Producto;
+import productos.modelos.*;
 import usuarios.modelos.*;
 
 
@@ -62,9 +62,9 @@ public class ControladorPrincipal {
          
         System.out.println("#################### ");
         System.out.println("PRODUCTOS");
-        Producto p1 = new Producto("..Milanesa con puré", 1, "Milanesa con puré", 1250.0f, true, "PLATO PRINCIPAL");
-        Producto p2= new Producto("..Empanadas", 2, "Empanadas", 150.70f, true, "PLATO PRINCIPAL");
-        Producto p3 = new Producto("..Flan con dulce", 3, "Flan con dulce", 850.0f, false, "POSTRE");
+        Producto p1 = new Producto("..Milanesa con puré", 1, "Milanesa con puré", 1250.0f, Estado.DISPONIBLE, Categoria.PLATO_PRINCIPAL);
+        Producto p2= new Producto("..Empanadas", 2, "Empanadas", 150.70f, Estado.DISPONIBLE, Categoria.PLATO_PRINCIPAL);
+        Producto p3 = new Producto("..Flan con dulce", 3, "Flan con dulce", 850.0f, Estado.NO_DISPONIBLE, Categoria.POSTRE);
         
         /*p1.nombre = "..Milanesa con puré"
         p1.codigo=1;

@@ -13,16 +13,16 @@ public class Producto {
     private String nombre;
     private String descripcion;
     private float precio;
-    private boolean estado;
-    private String tipo;
+    private Estado estado;
+    private Categoria categoria;
 
-    public Producto(String nombre, int codigo, String descripcion, float precio, boolean estado, String tipo) {
+    public Producto(String nombre, int codigo, String descripcion, float precio, Estado estado, Categoria categoria) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precio = precio;
         this.estado = estado;
-        this.tipo = tipo;
+        this.categoria = categoria;
     }
 
     public String verNombre() {
@@ -49,20 +49,20 @@ public class Producto {
         this.precio = precio;
     }
 
-    public boolean verEstado() {
+    public Estado verEstado() {
         return estado;
     }
 
-    public void asignarEstado(boolean estado) {
+    public void asignarEstado(Estado estado) {
         this.estado = estado;
     }
 
-    public String verTipo() {
-        return tipo;
+    public Categoria verCategoria() {
+        return categoria;
     }
 
-    public void asignarTipo(String tipo) {
-        this.tipo = tipo;
+    public void asignarCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     @Override
@@ -77,13 +77,8 @@ public class Producto {
         System.out.println("Producto: " + nombre);
         System.out.println("Descripcion: " + descripcion);
         System.out.println("Precio: " + precio);
-        System.out.println("Tipo: " + tipo);
-        System.out.println("Estado: \n");
-        if(estado) {
-            System.out.println("Disponible");
-        }
-        else {
-            System.out.println("No disponible");
-        }
+        System.out.println("Tipo: " + categoria);
+        System.out.println("Estado:" + estado);
+        
     }
 }
