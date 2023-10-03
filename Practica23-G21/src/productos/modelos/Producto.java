@@ -77,7 +77,7 @@ public class Producto {
         System.out.println("Producto: " + nombre);
         System.out.println("Descripcion: " + descripcion);
         System.out.println("Precio: " + precio);
-        System.out.println("Tipo: " + categoria);
+        System.out.println("Categoria: " + categoria);
         System.out.println("Estado:" + estado);
         
     }

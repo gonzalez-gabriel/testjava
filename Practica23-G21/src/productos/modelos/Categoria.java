@@ -9,6 +9,21 @@ package productos.modelos;
  * @author gabri
  */
 public enum Categoria {
-    ENTRADA, PLATO_PRINCIPAL, POSTRE;
+    ENTRADA("ENTRADA"), PLATO_PRINCIPAL("PLATO PRINCIPAL"), POSTRE("POSTRE");
+
+  private String unaCadena;
+
+    private Categoria(String unaCadena) {
+        this.unaCadena = unaCadena;
+    }
+
+    @Override
+    public String toString() {
+        return  unaCadena ;
+    }
+
+    
+  
+  
 }
 

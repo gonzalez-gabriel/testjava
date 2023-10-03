@@ -9,5 +9,21 @@ package productos.modelos;
  * @author gabri
  */
 public enum Estado {
-    DISPONIBLE, NO_DISPONIBLE;
+    DISPONIBLE("DISPONIBLE"), NO_DISPONIBLE("NO DISPONIBLE");
+
+    private String otraCadena;
+
+    private Estado(String otraCadena) {
+        this.otraCadena = otraCadena;
+    }
+
+    @Override
+    public String toString() {
+        return otraCadena;
+    }
+    
+    
+    
+    
+    
 }
