@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package principal.controladores;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
+import pedidos.modelos.*;
 import productos.modelos.*;
 import usuarios.modelos.*;
 
@@ -21,6 +24,9 @@ public class ControladorPrincipal {
         ArrayList<Empleado> listaEmpleados = new ArrayList<>();
         ArrayList<Encargado> listaEncargados = new ArrayList<>();
         ArrayList<Producto> listaProductos = new ArrayList<>();
+        ArrayList<Pedido> listaPedidos = new ArrayList<>();
+        
+
         /*Instanciar 3 objetos de cada clase y guardarlos en su correspondiente ArrayList. */
         Empleado e1= new Empleado("clave1","Nombre1","Apellido1","empleado1@mail.com");
         Empleado e2= new Empleado("clave2","Nombre2","Apellido2","empleado2@mail.com");
@@ -40,7 +46,7 @@ public class ControladorPrincipal {
         //e3.nombre="Nombre3";
         //e3.correo="empleado3@mail.com";
         //e3.clave="clave3";
-        
+     
         listaEmpleados.add(e1);
         listaEmpleados.add(e2);
         listaEmpleados.add(e3);
@@ -53,18 +59,18 @@ public class ControladorPrincipal {
         
         /*Realizar algunas modificaciones a algunos de los objetos antes creados, */
         //e1.apellido="APELLIDOEmpleado1";
-        e1.asignarApellido("APELLIDO CAMBIADO1");
+//        e1.asignarApellido("APELLIDO CAMBIADO1");
         //listaEmpleados.get(1).nombre="NOMBRE";
         
         /*y volver a recorrer los ArrayLists verificando que se hicieron los cambios. */
-         for (Empleado e: listaEmpleados)
-            e.mostrar();
+//         for (Empleado e: listaEmpleados)
+//            e.mostrar();
          
         System.out.println("#################### ");
         System.out.println("PRODUCTOS");
-        Producto p1 = new Producto("..Milanesa con puré", 1, "Milanesa con puré", 1250.0f, Estado.DISPONIBLE, Categoria.PLATO_PRINCIPAL);
-        Producto p2= new Producto("..Empanadas", 2, "Empanadas", 150.70f, Estado.DISPONIBLE, Categoria.PLATO_PRINCIPAL);
-        Producto p3 = new Producto("..Flan con dulce", 3, "Flan con dulce", 850.0f, Estado.NO_DISPONIBLE, Categoria.POSTRE);
+        Producto p1 = new Producto("..Milanesa con pure", 1, "Milanesa con pure", 1250.0f, productos.modelos.Estado.DISPONIBLE, Categoria.PLATO_PRINCIPAL);
+        Producto p2= new Producto("..Empanadas", 2, "Empanadas", 150.70f, productos.modelos.Estado.DISPONIBLE, Categoria.PLATO_PRINCIPAL);
+        Producto p3 = new Producto("..Flan con dulce", 3, "Flan con dulce", 850.0f, productos.modelos.Estado.NO_DISPONIBLE, Categoria.POSTRE);
         
         /*p1.nombre = "..Milanesa con puré"
         p1.codigo=1;
@@ -94,7 +100,7 @@ public class ControladorPrincipal {
          
         System.out.println("#################### ");
         System.out.println("ENCARGADOS");
-        //implementar aqui
+//        implementar aqui
         
         Encargado en1 = new Encargado("Clave1","Nombre1","Apellido1","correo1@gmail.com");
         Encargado en2 = new Encargado("Clave2","Nombre2","Apellido2","correo2@gmail.com");
@@ -111,7 +117,7 @@ public class ControladorPrincipal {
         
         System.out.println("#################### ");
         System.out.println("CLIENTES");
-        //implementar aqui
+//        implementar aqui
         
         Cliente c1 = new Cliente("Clave1","Nombre1","Apellido1","Correo1@gmail");
         Cliente c2 = new Cliente("Clave2","Nombre2","Apellido2","Correo2@gmail");
@@ -123,6 +129,20 @@ public class ControladorPrincipal {
         
         for(Cliente c : listaClientes){
             c.mostrar();
+        }
+        
+        System.out.println("#################### ");
+        System.out.println("PEDIDOS");
+        Pedido pedido1 = new Pedido(1,LocalDateTime.now(),pedidos.modelos.Estado.CREADO,c1);
+        Pedido pedido2 = new Pedido(2,LocalDateTime.of(2024, 7, 27, 12, 45),pedidos.modelos.Estado.SOLICITADO,c2);
+        Pedido pedido3 = new Pedido(3,LocalDateTime.of(2026,Month.FEBRUARY,16,11,15),pedidos.modelos.Estado.ENTREGADO,c3);
+        
+        listaPedidos.add(pedido1);
+        listaPedidos.add(pedido2);
+        listaPedidos.add(pedido3);
+        
+        for (Pedido p: listaPedidos) {
+            p.mostrarPedido();
         }
     }
 }

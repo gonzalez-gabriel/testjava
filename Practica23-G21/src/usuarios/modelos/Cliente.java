@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package usuarios.modelos;
+import java.util.ArrayList;
+import pedidos.modelos.Pedido;
 
 /**
  *
@@ -13,6 +15,7 @@ public class Cliente {
     private String nombre;
     private String apellido;
     private String correo;
+    private ArrayList<Pedido> pedidos = new ArrayList<>();
     
     public Cliente(String clave, String nombre, String apellido, String correo) {
         this.clave = clave;
@@ -51,13 +54,19 @@ public class Cliente {
 
     public void asignarCorreo(String correo) {
         this.correo = correo;
-    }
+    } 
     
+    public void agregarPedido(Pedido p) {
+        pedidos.add(p);
+    }
     
     
     public void mostrar() {
         System.out.println("Usuario: " + nombre + apellido);
         System.out.println("Clave: " + clave);
         System.out.println("Correo: " + correo);
+        for (Pedido p: pedidos) {
+            p.mostrarPedido();
+        }
     }
 }
