@@ -5,6 +5,7 @@
 package pedidos.modelos;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import usuarios.modelos.Cliente;
 
 /**
@@ -12,16 +13,26 @@ import usuarios.modelos.Cliente;
  * @author USUARIO
  */
 public class Pedido {
-    int numero;
-    LocalDateTime fechaYHora;
-    Estado estado;
-    Cliente unCliente;
+    private int numero;
+    private LocalDateTime fechaYHora;
+    private Estado estado;
+    private Cliente unCliente;
+    private ArrayList<ProductoDelPedido> unProductoDelPedido;
 
-    public Pedido(int numero, LocalDateTime fechaYHora, Estado estado, Cliente unCliente) {
+    public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> PdP, Cliente unCliente) {
         this.numero = numero;
         this.fechaYHora = fechaYHora;
-        this.estado = estado;
+        this.estado = Estado.CREANDO;
         this.unCliente = unCliente;
+        this.unProductoDelPedido = PdP;
+    }
+
+    public ArrayList<ProductoDelPedido> verUnProductoDelPedido() {
+        return unProductoDelPedido;
+    }
+
+    public void asignarUnProductoDelPedido(ArrayList<ProductoDelPedido> unProductoDelPedido) {
+        this.unProductoDelPedido = unProductoDelPedido;
     }
 
     public int verNumero() {
@@ -74,8 +85,13 @@ public class Pedido {
         
         System.out.println("Nro. " + numero);
         System.out.println("Fecha: " + fechaFormateada + "\tHora: " + fechaYHora.getHour()+":"+fechaYHora.getMinute());
-        System.out.println("Cliente: " + unCliente.verNombre() + " " + unCliente.verApellido());
+        System.out.println("Cliente: " + unCliente.verNombre() + "," + unCliente.verApellido());
         System.out.println("Estado: " + estado);
+        System.out.println("\tProducto \tCantidad");
+        System.out.println("\t=========================");
+        for(ProductoDelPedido pdp: unProductoDelPedido ){
+        System.out.println("\t" + pdp.verUnProducto() + "\t" + pdp.verCantidad());
+        }
     }
     
 }

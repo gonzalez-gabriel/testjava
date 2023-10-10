@@ -15,7 +15,7 @@ public class Cliente {
     private String nombre;
     private String apellido;
     private String correo;
-    private ArrayList<Pedido> pedidos = new ArrayList<>();
+    private ArrayList<Pedido> pedidos;
     
     public Cliente(String clave, String nombre, String apellido, String correo) {
         this.clave = clave;
@@ -65,8 +65,10 @@ public class Cliente {
         System.out.println("Usuario: " + nombre + apellido);
         System.out.println("Clave: " + clave);
         System.out.println("Correo: " + correo);
+        if(!(pedidos == null ||  pedidos.isEmpty())){
         for (Pedido p: pedidos) {
             p.mostrarPedido();
+        }
         }
     }
 }

@@ -10,7 +10,7 @@ package pedidos.modelos;
  */
 public enum Estado {
     
-    CREADO("CREADO"),SOLICITADO("SOLICITADO"),PROCESANDO("PROCESANDO"),ENTREGADO("ENTREGADO");
+    CREANDO("CREANDO"),SOLICITADO("SOLICITADO"),PROCESANDO("PROCESANDO"),ENTREGADO("ENTREGADO");
     
     private String cadenaEstadoPedido;
     
