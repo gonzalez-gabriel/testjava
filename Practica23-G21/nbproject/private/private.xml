@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/practica23/g21/Practica23G21.java</file>
             <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/productos/modelos/Estado.java</file>
+            <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/pedidos/modelos/Estado.java</file>
             <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/usuarios/modelos/Cliente.java</file>
             <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/usuarios/modelos/Empleado.java</file>
             <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/principal/controladores/ControladorPrincipal.java</file>
+            <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/pedidos/modelos/Pedido.java</file>
             <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/productos/modelos/Categoria.java</file>
             <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/usuarios/modelos/Encargado.java</file>
             <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/productos/modelos/Producto.java</file>

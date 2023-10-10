@@ -1,6 +1,9 @@
 #Archivos de texto
 *.txt
 
+#Archivos .xml
+*.xlm
+
 #Archivos de clase
 *.class
 /Practica23-G21/nbproject/private/
