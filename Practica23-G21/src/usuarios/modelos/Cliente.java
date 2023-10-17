@@ -11,19 +11,19 @@ import pedidos.modelos.Pedido;
  * @author estudiante
  */
 public class Cliente {
-    private String clave;
     private String nombre;
     private String apellido;
     private String correo;
+    private String clave;
     private ArrayList<Pedido> pedidos;
-    
-    public Cliente(String clave, String nombre, String apellido, String correo) {
-        this.clave = clave;
+
+    public Cliente(String nombre, String apellido, String correo, String clave) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
+        this.clave = clave;
     }
-
+    
     public String verClave() {
         return clave;
     }
@@ -62,13 +62,15 @@ public class Cliente {
     
     
     public void mostrar() {
-        System.out.println("Usuario: " + nombre + apellido);
+        System.out.println("Usuario: " + nombre + "\t" + apellido);
         System.out.println("Clave: " + clave);
         System.out.println("Correo: " + correo);
-        if(!(pedidos == null ||  pedidos.isEmpty())){
-        for (Pedido p: pedidos) {
-            p.mostrarPedido();
+        if (!(pedidos == null || pedidos.isEmpty())) {
+            for (Pedido p: pedidos) {
+                p.mostrarPedido();
+            
+                }
+            }
         }
         }
-    }
-}
+    

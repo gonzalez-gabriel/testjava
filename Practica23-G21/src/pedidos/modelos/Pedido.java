@@ -17,22 +17,14 @@ public class Pedido {
     private LocalDateTime fechaYHora;
     private Estado estado;
     private Cliente unCliente;
-    private ArrayList<ProductoDelPedido> unProductoDelPedido;
+    private ArrayList<ProductoDelPedido> productosDelPedido;
 
-    public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> PdP, Cliente unCliente) {
+    public Pedido(int numero, LocalDateTime fechaYHora, Cliente unCliente, ArrayList<ProductoDelPedido> pdp) {
         this.numero = numero;
         this.fechaYHora = fechaYHora;
         this.estado = Estado.CREANDO;
         this.unCliente = unCliente;
-        this.unProductoDelPedido = PdP;
-    }
-
-    public ArrayList<ProductoDelPedido> verUnProductoDelPedido() {
-        return unProductoDelPedido;
-    }
-
-    public void asignarUnProductoDelPedido(ArrayList<ProductoDelPedido> unProductoDelPedido) {
-        this.unProductoDelPedido = unProductoDelPedido;
+        this.productosDelPedido = pdp;
     }
 
     public int verNumero() {
@@ -77,6 +69,16 @@ public class Pedido {
         this.fechaYHora = this.fechaYHora.withMonth(unaFecha.getMonthValue());
         this.fechaYHora = this.fechaYHora.withYear(unaFecha.getYear());
     }
+
+    public ArrayList<ProductoDelPedido> verPdp() {
+        return this.productosDelPedido;
+    }
+
+    public void asignarPdp(ArrayList<ProductoDelPedido> pdp) {
+        this.productosDelPedido = pdp;
+    }
+    
+    
    
     
     public void mostrarPedido () {
@@ -85,12 +87,12 @@ public class Pedido {
         
         System.out.println("Nro. " + numero);
         System.out.println("Fecha: " + fechaFormateada + "\tHora: " + fechaYHora.getHour()+":"+fechaYHora.getMinute());
-        System.out.println("Cliente: " + unCliente.verNombre() + "," + unCliente.verApellido());
+        System.out.println("Cliente: " + unCliente.verNombre() + ", " + unCliente.verApellido());
         System.out.println("Estado: " + estado);
-        System.out.println("\tProducto \tCantidad");
-        System.out.println("\t=========================");
-        for(ProductoDelPedido pdp: unProductoDelPedido ){
-        System.out.println("\t" + pdp.verUnProducto() + "\t" + pdp.verCantidad());
+        System.out.println("\tProducto\tCantidad");
+        System.out.println("\t========================");
+        for (ProductoDelPedido pdp : productosDelPedido) {
+            System.out.println("\t" + pdp.verProducto() + "\t" + pdp.verCantidad());
         }
     }
     

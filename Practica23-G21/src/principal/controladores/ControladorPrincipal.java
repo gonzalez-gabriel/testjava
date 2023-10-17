@@ -29,9 +29,9 @@ public class ControladorPrincipal  {
         ArrayList<Producto> productos = new ArrayList<>();
         ArrayList<Pedido> pedidos = new ArrayList<>();
         
-        Cliente unCliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
-        Cliente unCliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
-        Cliente unCliente3 = new Cliente("cliente3@bar.com", "claveCliente3", "ApellidoCliente3", "NombreCliente3");
+        Cliente unCliente1 = new Cliente("NombreCliente1", "ApellidoCliente1", "cliente1@bar.com", "ClaveCliente1");        
+        Cliente unCliente2 = new Cliente("NombreCliente2", "ApellidoCliente2", "cliente2@bar.com", "ClaveCliente2");
+        Cliente unCliente3 = new Cliente("NombreCliente3", "ApellidoCliente3", "cliente3@bar.com", "ClaveCliente3");
         
         clientes.add(unCliente1);
         clientes.add(unCliente2);
@@ -45,9 +45,9 @@ public class ControladorPrincipal  {
         }
         System.out.println();        
         
-        Empleado unEmpleado1 = new Empleado("empleado1@bar.com", "claveEmpleado1", "ApellidoEmpleado1", "NombreEmpleado1");        
-        Empleado unEmpleado2 = new Empleado("empleado2@bar.com", "claveEmpleado2", "ApellidoEmpleado2", "NombreEmpleado2");        
-        Empleado unEmpleado3 = new Empleado("empleado3@bar.com", "claveEmpleado3", "ApellidoEmpleado3", "NombreEmpleado3");
+        Empleado unEmpleado1 = new Empleado("NombreEmpleado1", "ApellidoEmpleado1", "empleado1@bar.com", "ClaveEmpleado1");        
+        Empleado unEmpleado2 = new Empleado("NombreEmpleado2", "ApellidoEmpleado2", "empleado2@bar.com", "ClaveEmpleado2");        
+        Empleado unEmpleado3 = new Empleado("NombreEmpleado3", "ApellidoEmpleado3", "empleado3@bar.com", "ClaveEmpleado3");
                 
         empleados.add(unEmpleado1);
         empleados.add(unEmpleado2);
@@ -61,10 +61,10 @@ public class ControladorPrincipal  {
         }
         System.out.println();
         
-        Encargado unEncargado1 = new Encargado("encargado1@bar.com", "claveEncargado1", "ApellidoEncargado1", "NombreEncargado1");
-        Encargado unEncargado2 = new Encargado("encargado2@bar.com", "claveEncargado2", "ApellidoEncargado2", "NombreEncargado2");
-        Encargado unEncargado3 = new Encargado("encargado3@bar.com", "claveEncargado3", "ApellidoEncargado3", "NombreEncargado3");
-
+        Encargado unEncargado1 = new Encargado("NombreEncargado1", "ApellidoEncargado1", "encargado1@bar.com", "ClaveEncargado1");
+        Encargado unEncargado2 = new Encargado("NombreEncargado2", "ApellidoEncargado2", "encargado2@bar.com", "ClaveEncargado2");
+        Encargado unEncargado3 = new Encargado("NombreEncargado3", "ApellidoEncargado3", "encargado3@bar.com", "ClaveEncargado3");
+        
         encargados.add(unEncargado1);
         encargados.add(unEncargado2);
         encargados.add(unEncargado3);
@@ -77,9 +77,9 @@ public class ControladorPrincipal  {
         }
         System.out.println();
         
-        Producto unProducto1 = new Producto(1, "Producto1", Categoria.ENTRADA, Estado.DISPONIBLE, 1.0f);        
-        Producto unProducto2 = new Producto(2, "Producto2", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 2.0f);
-        Producto unProducto3 = new Producto(3, "Producto3", Categoria.POSTRE, Estado.DISPONIBLE, 3.0f);
+        Producto unProducto1 = new Producto(1, "Producto1",Categoria.ENTRADA, Estado.DISPONIBLE, 1.0f);        
+        Producto unProducto2 = new Producto(2, "Producto2", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE,  2.0f );
+        Producto unProducto3 = new Producto(3, "Producto3",Categoria.POSTRE, Estado.DISPONIBLE,3.0f);
         
         productos.add(unProducto1);
         productos.add(unProducto2);
@@ -106,19 +106,19 @@ public class ControladorPrincipal  {
         System.out.println(unProducto1);
         
         ArrayList<ProductoDelPedido> pdp1 = new ArrayList<>();
-        pdp1.add(new ProductoDelPedido(unProducto1, 1));
-        pdp1.add(new ProductoDelPedido(unProducto2, 2));
-        Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), pdp1, unCliente1);        
+        pdp1.add(new ProductoDelPedido(1, unProducto1));
+        pdp1.add(new ProductoDelPedido(2, unProducto2));
+        Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), unCliente1, pdp1);        
         
         ArrayList<ProductoDelPedido> pdp2 = new ArrayList<>();
-        pdp2.add(new ProductoDelPedido(unProducto1, 10));
-        pdp2.add(new ProductoDelPedido(unProducto2, 20));
-        Pedido unPedido2 = new Pedido(2, LocalDateTime.now(), pdp2, unCliente2);        
+        pdp2.add(new ProductoDelPedido(10, unProducto1));
+        pdp2.add(new ProductoDelPedido(20, unProducto2));
+        Pedido unPedido2 = new Pedido(2, LocalDateTime.now(), unCliente2, pdp2);        
         
         ArrayList<ProductoDelPedido> pdp3 = new ArrayList<>();
-        pdp3.add(new ProductoDelPedido(unProducto1, 100));
-        pdp3.add(new ProductoDelPedido(unProducto2, 200));
-        Pedido unPedido3 = new Pedido(3, LocalDateTime.now(), pdp3, unCliente3);        
+        pdp3.add(new ProductoDelPedido(100,unProducto1));
+        pdp3.add(new ProductoDelPedido(200, unProducto2));
+        Pedido unPedido3 = new Pedido(3, LocalDateTime.now(),unCliente3, pdp3);        
         
         pedidos.add(unPedido1);
         pedidos.add(unPedido2);
