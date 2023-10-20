@@ -4,61 +4,23 @@
  */
 package usuarios.modelos;
 
+import java.util.ArrayList;
+import pedidos.modelos.Pedido;
+
 /**
  *
  * @author estudiante
  */
 public class Encargado extends Usuario {
-//    private String nombre;
-//    private String apellido;
-//    private String correo;
-//    private String clave;
 
     public Encargado(String nombre, String apellido, String correo, String clave) {
-        super(nombre, apellido, correo, clave);
-//        this.nombre = nombre;
-//        this.apellido = apellido;
-//        this.correo = correo;
-//        this.clave = clave;
+        super(nombre,apellido,correo,clave);
     }
-
-//    public String verClave() {
-//        return clave;
-//    }
-//
-//    public void asignarClave(String clave) {
-//        this.clave = clave;
-//    }
-//
-//    public String verNombre() {
-//        return nombre;
-//    }
-//
-//    public void asignarNombre(String nombre) {
-//        this.nombre = nombre;
-//    }
-//
-//    public String verApellido() {
-//        return apellido;
-//    }
-//
-////    public void asignarApellido(String apellido) {
-//        this.apellido = apellido;
-//    }
-//
-//    public String verCorreo() {
-//        return correo;
-//    }
-//
-//    public void asignarCorreo(String correo) {
-//        this.correo = correo;
-//    }
     
+    @Override
+    public ArrayList<Pedido> verPedidos(){
+        return null;
     
+    }
     
-//    public void mostrar() {
-//        System.out.println("Usuario: " + nombre + "\t" + apellido);
-//        System.out.println("Clave: " + clave);
-//        System.out.println("Correo: " + correo);
-//    }
 }

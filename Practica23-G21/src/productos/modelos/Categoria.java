@@ -9,7 +9,7 @@ package productos.modelos;
  * @author gabri
  */
 public enum Categoria {
-    ENTRADA("ENTRADA"), PLATO_PRINCIPAL("PLATO PRINCIPAL"), POSTRE("POSTRE");
+    ENTRADA("ENTRADA"), PLATOPRINCIPAL("PLATO PRINCIPAL"), POSTRE("POSTRE");
 
   private String unaCadena;
 

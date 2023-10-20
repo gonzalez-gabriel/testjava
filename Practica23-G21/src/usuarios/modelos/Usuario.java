@@ -4,24 +4,25 @@
  */
 package usuarios.modelos;
 
+import java.util.ArrayList;
 import java.util.Objects;
+import pedidos.modelos.Pedido;
 
 /**
  *
- * @author gabri
+ * @author USUARIO
  */
 public abstract class Usuario {
-    
     private String nombre;
     private String apellido;
     private String correo;
     private String clave;
 
-    public Usuario(String nombre, String apellido, String correo, String clave) {
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public Usuario(String correo, String clave, String apellido, String nombre) {
         this.correo = correo;
         this.clave = clave;
+        this.apellido = apellido;
+        this.nombre = nombre;
     }
 
     public String verNombre() {
@@ -58,8 +59,8 @@ public abstract class Usuario {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 37 * hash + Objects.hashCode(this.correo);
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.correo);
         return hash;
     }
 
@@ -71,19 +72,17 @@ public abstract class Usuario {
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (getClass().getClass() != obj.getClass().getClass()) {
             return false;
         }
         final Usuario other = (Usuario) obj;
         return Objects.equals(this.correo, other.correo);
     }
     
-    
-    
-     public void mostrar() {
+    public void mostrar () {
         System.out.println(apellido + ", " + nombre);
-//        System.out.println("Clave: " + clave);
         System.out.println("Correo: " + correo);
     }
     
+    public abstract ArrayList<Pedido> verPedidos();
 }

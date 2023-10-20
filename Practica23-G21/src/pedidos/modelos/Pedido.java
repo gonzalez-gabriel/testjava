@@ -19,12 +19,13 @@ public class Pedido {
     private Cliente unCliente;
     private ArrayList<ProductoDelPedido> productosDelPedido;
 
-    public Pedido(int numero, LocalDateTime fechaYHora, Cliente unCliente, ArrayList<ProductoDelPedido> pdp) {
+    public Pedido(int numero, LocalDateTime fechaYHora,ArrayList<ProductoDelPedido> pdp, Cliente unCliente) {
         this.numero = numero;
         this.fechaYHora = fechaYHora;
+        this.productosDelPedido = pdp;
         this.estado = Estado.CREANDO;
         this.unCliente = unCliente;
-        this.productosDelPedido = pdp;
+        
     }
 
     public int verNumero() {
@@ -103,7 +104,7 @@ public class Pedido {
     
    
     
-    public void mostrarPedido () {
+    public void mostrar () {
         String patronFecha = "dd/MM/yyyy";
         String fechaFormateada = fechaYHora.format(DateTimeFormatter.ofPattern(patronFecha)); 
         

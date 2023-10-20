@@ -1,6 +1,9 @@
 #Archivos de texto
 *.txt
 
+#Archivos .properties
+*.properties
+
 #Archivos .xml
 *.xlm
 

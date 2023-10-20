@@ -11,65 +11,50 @@ import pedidos.modelos.Pedido;
  * @author estudiante
  */
 public class Cliente extends Usuario {
-//    private String nombre;
-//    private String apellido;
-//    private String correo;
-//    private String clave;
-    private ArrayList<Pedido> pedidos;
+    private ArrayList<Pedido> pedidos = new ArrayList<>();
 
-    public Cliente(String nombre, String apellido, String correo, String clave) {
-    super(nombre, apellido, correo, clave);    
-
-    }
-    
-//    public String verClave() {
-//        return clave;
-//    }
-//
-//    public void asignarClave(String clave) {
-//        this.clave = clave;
-//    }
-//
-//    public String verNombre() {
-//        return nombre;
-//    }
-//
-//    public void asignarNombre(String nombre) {
-//        this.nombre = nombre;
-//    }
-//
-//    public String verApellido() {
-//        return apellido;
-//    }
-//
-//    public void asignarApellido(String apellido) {
-//        this.apellido = apellido;
-//    }
-//
-//    public String verCorreo() {
-//        return correo;
-//    }
-//
-//    public void asignarCorreo(String correo) {
-//        this.correo = correo;
-//    } 
+    public Cliente(String correo, String clave, String apellido, String nombre) {
+        super(correo,clave,apellido,nombre);
+    } 
     
     public void agregarPedido(Pedido p) {
+        if (pedidos.isEmpty() || !pedidos.contains(p)) {
         pedidos.add(p);
+        }
+        else {
+            for(Pedido aux : pedidos) {
+                if (aux.equals(p)) {
+                    pedidos.remove(aux);
+                    pedidos.add(p);
+                }
+            }
+        }
+    }
+
+    public void cancelarPedido(Pedido p) {
+        for(Pedido aux : pedidos) {
+                if (aux.equals(p)) {
+                    pedidos.remove(aux);
+                }
+        }
     }
     
-    
+    @Override
     public void mostrar() {
         super.mostrar();
-//        System.out.println("Usuario: " + nombre + "\t" + apellido);
-//        System.out.println("Clave: " + clave);
-//        System.out.println("Correo: " + correo);
         if (!(pedidos == null || pedidos.isEmpty())) {
             for (Pedido p: pedidos) {
-                p.mostrarPedido();
+                p.mostrar();
             
                 }
             }
         }
-        }
+    
+   
+    
+    @Override
+    public ArrayList<Pedido> verPedidos() {
+        return pedidos;
+    }
+}
     
