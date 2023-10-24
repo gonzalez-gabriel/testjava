@@ -32,11 +32,15 @@ public class Cliente extends Usuario {
     }
 
     public void cancelarPedido(Pedido p) {
-        for(Pedido aux : pedidos) {
-                if (aux.equals(p)) {
-                    pedidos.remove(aux);
-                }
-        }
+        int posicion = pedidos.indexOf(p);
+        if (posicion >= 0) 
+            pedidos.remove(posicion);
+//        for(Pedido aux : pedidos) {
+//            
+//                if (aux.equals(p)) {
+//                    pedidos.remove(aux);
+//                }
+//        }
     }
     
     @Override
@@ -45,7 +49,6 @@ public class Cliente extends Usuario {
         if (!(pedidos == null || pedidos.isEmpty())) {
             for (Pedido p: pedidos) {
                 p.mostrar();
-            
                 }
             }
         }

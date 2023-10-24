@@ -193,7 +193,6 @@ public class ControladorPrincipal  {
         
         
         ((Cliente)unCliente1).agregarPedido(unPedido1);
-        ((Cliente)unCliente1).agregarPedido(unPedido2);
         
         for(Pedido p: unCliente1.verPedidos()){
             p.mostrar();
@@ -201,10 +200,17 @@ public class ControladorPrincipal  {
         
         ((Cliente)unCliente1).cancelarPedido(unPedido1);
         
-        
-        for(Pedido p: unCliente1.verPedidos()){
-            p.mostrar();
+        if (unCliente1.verPedidos().isEmpty()) {
+            System.out.println("Este cliente no tiene pedidos");
         }
+        else {
+            for(Pedido p: unCliente1.verPedidos()){
+                p.mostrar(); 
+            }
+            
+        }
+            
+        
         
         
         
