@@ -5,7 +5,7 @@
 *.properties
 
 #Archivos .xml
-*.xlm
+*.xml
 
 #Archivos de clase
 *.class
