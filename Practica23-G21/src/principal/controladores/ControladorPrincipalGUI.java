@@ -28,18 +28,18 @@ public class ControladorPrincipalGUI {
     */
         establecerLookAndFeel("Nimbus"); 
         // PRODUCTO
-        VentanaAMProducto ventana = new VentanaAMProducto(null);
-        ventana.setLocationRelativeTo(null);
-        ventana.setTitle("Nuevo producto");
-        ventana.setVisible(true);
+//        VentanaAMProducto ventana = new VentanaAMProducto(null);
+//        ventana.setLocationRelativeTo(null);
+//        ventana.setTitle("Nuevo producto");
+//        ventana.setVisible(true);
         
         //CLIENTE
-      /* 
+       
         VentanaAMCliente ventana = new VentanaAMCliente(null);
         ventana.setLocationRelativeTo(null);
         ventana.setTitle("Nuevo cliente");
         ventana.setVisible(true);
-       */        
+              
        //EMPLEADO 
        /*
         VentanaAMEmpleado ventana = new VentanaAMEmpleado(null);
