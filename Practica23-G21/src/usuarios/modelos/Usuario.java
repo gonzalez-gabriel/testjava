@@ -72,7 +72,7 @@ public abstract class Usuario {
         if (obj == null) {
             return false;
         }
-        if ((this.getClass()).getClass() != (obj.getClass()).getClass()) {
+        if (getClass().getSuperclass() != getClass().getSuperclass()) {
             return false;
         }
         final Usuario other = (Usuario) obj;

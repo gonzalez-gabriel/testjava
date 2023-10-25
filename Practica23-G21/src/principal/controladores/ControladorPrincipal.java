@@ -48,7 +48,7 @@ public class ControladorPrincipal  {
         }
         System.out.println();
                         
-        Usuario unEmpleado1 = new Empleado("empleado1@bar.com", "claveEmpleado1", "ApellidoEmpleado1", "NombreEmpleado1");        
+        Usuario unEmpleado1 = new Empleado("cliente1@bar.com", "claveEmpleado1", "ApellidoEmpleado1", "NombreEmpleado1");        
         Usuario unEmpleado2 = new Empleado("empleado2@bar.com", "claveEmpleado2", "ApellidoEmpleado2", "NombreEmpleado2");        
         Usuario unEmpleado3 = new Empleado("empleado3@bar.com", "claveEmpleado3", "ApellidoEmpleado3", "NombreEmpleado3");
         Usuario unEmpleado4 = new Empleado("empleado3@bar.com", "claveEmpleado4", "ApellidoEmpleado4", "NombreEmpleado4");

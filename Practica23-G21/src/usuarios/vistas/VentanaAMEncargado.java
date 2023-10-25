@@ -8,10 +8,11 @@ package usuarios.vistas;
 import java.awt.Dialog;
 import java.util.ArrayList;
 import javax.swing.JDialog;
+import usuarios.modelos.Cliente;
 import usuarios.modelos.Encargado;
 
 public class VentanaAMEncargado extends JDialog {
-    private ArrayList<Encargado> encargado = new ArrayList<>();
+    private ArrayList<Encargado> encargados = new ArrayList<>();
     
     /**
      * Constructor
@@ -136,7 +137,21 @@ public class VentanaAMEncargado extends JDialog {
     }//GEN-LAST:event_btnCancelarClic
 
     private void btnGuardarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClic
-        //Completar
+        String correo = this.txtCorreo.getText().trim();
+        String apellido = this.txtApellido.getText().trim();
+        String nombre = this.txtNombre.getText().trim();
+        String clave = new String(this.passClave.getPassword());
+        Encargado unEncargado = new Encargado(correo, clave, apellido, nombre);
+        
+        if (!this.encargados.contains(unEncargado))
+        this.encargados.add(unEncargado);
+        
+        System.out.println("Encargados");
+        System.out.println("========");
+        for(Encargado e : this.encargados) {
+            e.mostrar();
+            System.out.println();
+        }
     }//GEN-LAST:event_btnGuardarClic
 
 

@@ -13,8 +13,8 @@ import pedidos.modelos.Pedido;
  */
 public class Encargado extends Usuario {
 
-    public Encargado(String nombre, String apellido, String correo, String clave) {
-        super(nombre,apellido,correo,clave);
+    public Encargado(String correo, String clave, String apellido, String nombre) {
+        super(correo,clave,apellido,nombre);
     }
     
     @Override
