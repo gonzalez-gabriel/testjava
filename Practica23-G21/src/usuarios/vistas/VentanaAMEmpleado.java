@@ -8,6 +8,7 @@ package usuarios.vistas;
 import java.awt.Dialog;
 import java.util.ArrayList;
 import javax.swing.JDialog;
+import usuarios.modelos.Cliente;
 import usuarios.modelos.Empleado;
 
 public class VentanaAMEmpleado extends JDialog {
@@ -137,6 +138,19 @@ public class VentanaAMEmpleado extends JDialog {
 
     private void btnGuardarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClic
         //Completar
+        String correo = this.txtCorreo.getText().trim();
+        String apellido = this.txtApellido.getText().trim();
+        String nombre = this.txtNombre.getText().trim();
+        String clave = new String(this.passClave.getPassword());
+        Empleado unEmpleado = new Empleado(correo, clave, apellido, nombre);
+        this.empleados.add(unEmpleado);
+        
+        System.out.println("Clientes");
+        System.out.println("========");
+        for(Empleado c : this.empleados) {
+            c.mostrar();
+            System.out.println();
+        }
     }//GEN-LAST:event_btnGuardarClic
 
 
