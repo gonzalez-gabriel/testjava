@@ -25,6 +25,10 @@ public class Producto {
         this.precio = precio;
     }
 
+    public int verCodigo() {
+        return codigo;
+    }
+
 //    public String verNombre() {
 //        return nombre;
 //    }
@@ -32,6 +36,9 @@ public class Producto {
 //    public void asignarNombre(String nombre) {
 //        this.nombre = nombre;
 //    }
+    public void AsignarCodigo(int codigo) {
+        this.codigo = codigo;
+    }
 
     public String verDescripcion() {
         return descripcion;
