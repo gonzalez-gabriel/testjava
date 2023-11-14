@@ -14,7 +14,7 @@ public class GestorProductos {
     private ArrayList <Producto> productos = new ArrayList<>();
     private static GestorProductos gestor;
     
-    public static final String EXITO_CREADO = "Producto creado exitosamente";
+    public static final String EXITO_CREADO = "Producto creado/modificado exitosamente";
     public static final String EXITO_MODIFICADO = "Producto modificado exitosamente";
     public static final String ERROR_CODIGO = "El código del producto es incorrecto";
     public static final String ERROR_DESCRIPCION = "La descripción del producto es incorrecta";
@@ -22,7 +22,7 @@ public class GestorProductos {
     public static final String ERROR_PRECIO = "El precio del producto es incorrecto";
     public static final String ERROR_CATEGORIA = "La categoría del producto es incorrecta";
 
-    public static final String ERROR_ESTADO = "El precio del producto es incorrecto";
+    public static final String ERROR_ESTADO = "El estado es incorrecto";
     public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese código";
 
     public static final String VALIDACION_EXITO = "Los datos del producto son correctos";
@@ -49,11 +49,11 @@ public class GestorProductos {
             return ERROR_CODIGO;
         }
         
-        if(descripcion.isEmpty() || descripcion.isBlank() ){
+        if(descripcion == null || descripcion.isBlank()){
             return ERROR_DESCRIPCION;
         }
         
-        if(precio > 0){
+        if(precio <= 0){
             return ERROR_PRECIO;
         }
         
@@ -69,17 +69,85 @@ public class GestorProductos {
         
         return EXITO_CREADO;
     }
-    /*
-    public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado){}
+    
+    public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
+    
+        if(codigo < 0){
+            return ERROR_CODIGO;
+        }
+        
+        if(descripcion == null || descripcion.isBlank()){
+            return ERROR_DESCRIPCION;
+        }
+        
+        if(precio <= 0){
+            return ERROR_PRECIO;
+        }
+        
+        if(categoria == null){
+            return ERROR_CATEGORIA;
+        }
+        
+        if(estado == null){
+            return ERROR_ESTADO;
+        }
+        
+        productoAModificar.AsignarCodigo(codigo);
+        productoAModificar.asignarCategoria(categoria);
+        productoAModificar.asignarDescripcion(descripcion);
+        productoAModificar.asignarEstado(estado);
+        productoAModificar.asignarPrecio(precio);
+        return EXITO_CREADO;
+        
+        
+        
+    }
 
-    public ArrayList<Producto> menu(){}
+    public ArrayList<Producto> menu(){
     
-    public ArrayList<Prodcuto> buscarProductos(String descripcion){}
+        return this.productos;
+    }
+   
     
-    public boolean existeEsteProducto (Producto producto){}
+    /////////*****************FALTA EL "PARCIALMENTE"**************//////////////////////////////
+    public ArrayList<Producto> buscarProductos(String descripcion){
+        ArrayList<Producto> descripcionBuscada = new ArrayList<>();
+        for(Producto p: productos){ 
+            if (p.verDescripcion().equals(descripcion)) {
+                descripcionBuscada.add(p);
+            }
+        }
+        return descripcionBuscada;
+    }
+  
+    public boolean existeEsteProducto (Producto producto){
     
-    public ArrayList <Producto> verProductosPorCategoria(Categoria categoria){}
+        for(Producto p: productos){ 
+            if (p.equals(productos)) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+  
+    public ArrayList <Producto> verProductosPorCategoria(Categoria categoria){
+    ArrayList<Producto> categoriaBuscada = new ArrayList<>();
+        for(Producto p: productos){ 
+            if (p.verCategoria() == categoria) {
+                categoriaBuscada.add(p);
+            }
+        }
+        return categoriaBuscada;
+    }
+  
+    public Producto obtenerProducto(Integer codigo){
+    for(Producto p: productos){
+        if(p.verCodigo() == codigo){
+            return p;
+        }
+    }
+        return null;
+    }
     
-    public Producto obtenerProducto(Integer codigo){}
-    */
 }

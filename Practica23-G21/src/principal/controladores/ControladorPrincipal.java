@@ -21,8 +21,11 @@ public class ControladorPrincipal  {
     public static void main(String[] args) {
         
         GestorProductos gp = GestorProductos.crear();
-        gp.crearProducto(1, "Papafrita", 0, Categoria.ENTRADA, Estado.DISPONIBLE);
+        System.out.println(gp.crearProducto(1,"Papa frita chango" , 10, Categoria.ENTRADA, Estado.DISPONIBLE));
+        Producto p1 = gp.menu().get(0);
+        System.out.println(gp.modificarProducto(p1, 100, "MCDonalds", 12, Categoria.ENTRADA, Estado.DISPONIBLE));
+        System.out.println(gp.buscarProductos("MCDonalds"));
         
-     
+        
 }
 }
