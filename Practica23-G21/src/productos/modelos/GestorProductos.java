@@ -45,75 +45,67 @@ public class GestorProductos {
     }
     
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
-        if(codigo < 0){
-            return ERROR_CODIGO;
+        
+        String validez = validarDatos(codigo,descripcion,precio,categoria,estado);
+        
+        if (validez.equals(VALIDACION_EXITO)) {
+            Producto p = new Producto(codigo,descripcion, categoria,estado,precio);
+            if (this.productos.contains(p)) {
+                p = null;
+                return PRODUCTOS_DUPLICADOS;               
+            }
+            else {
+                this.productos.add(p);
+                return EXITO_CREADO;
+            }            
         }
-        
-        if(descripcion == null || descripcion.isBlank()){
-            return ERROR_DESCRIPCION;
+        else {
+            return validez;
         }
-        
-        if(precio <= 0){
-            return ERROR_PRECIO;
-        }
-        
-        if(categoria == null){
-            return ERROR_CATEGORIA;
-        }
-        
-        if(estado == null){
-            return ERROR_ESTADO;
-        }
-        
-        productos.add(new Producto(codigo,descripcion, categoria,estado,precio));
-        
-        return EXITO_CREADO;
     }
     
     public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
-    
-        if(codigo < 0){
-            return ERROR_CODIGO;
+        
+        if (!this.productos.isEmpty() && this.productos.contains(productoAModificar)) {   
+            
+            String validez = validarDatos(codigo,descripcion,precio,categoria,estado);
+            
+            if (validez.equals(VALIDACION_EXITO)) {
+     
+            
+                int i = this.productos.indexOf(productoAModificar);
+                productoAModificar.AsignarCodigo(codigo);
+                productoAModificar.asignarDescripcion(descripcion);
+                productoAModificar.asignarPrecio(precio);
+                productoAModificar.asignarCategoria(categoria);
+                productoAModificar.asignarEstado(estado);
+                this.productos.set(i, productoAModificar);
+
+                return EXITO_CREADO;
+            
+            }
+            
+            else {
+                return validez;
+            }
+        
         }
         
-        if(descripcion == null || descripcion.isBlank()){
-            return ERROR_DESCRIPCION;
+        else {
+            return PRODUCTO_INEXISTENTE;
         }
-        
-        if(precio <= 0){
-            return ERROR_PRECIO;
-        }
-        
-        if(categoria == null){
-            return ERROR_CATEGORIA;
-        }
-        
-        if(estado == null){
-            return ERROR_ESTADO;
-        }
-        
-        productoAModificar.AsignarCodigo(codigo);
-        productoAModificar.asignarCategoria(categoria);
-        productoAModificar.asignarDescripcion(descripcion);
-        productoAModificar.asignarEstado(estado);
-        productoAModificar.asignarPrecio(precio);
-        return EXITO_CREADO;
-        
-        
         
     }
 
     public ArrayList<Producto> menu(){
-    
         return this.productos;
     }
    
     
-    /////////*****************FALTA EL "PARCIALMENTE"**************//////////////////////////////
     public ArrayList<Producto> buscarProductos(String descripcion){
         ArrayList<Producto> descripcionBuscada = new ArrayList<>();
         for(Producto p: productos){ 
-            if (p.verDescripcion().equals(descripcion)) {
+            if (p.verDescripcion().equals(descripcion) || p.verDescripcion().startsWith(descripcion)) {
                 descripcionBuscada.add(p);
             }
         }
@@ -121,17 +113,38 @@ public class GestorProductos {
     }
   
     public boolean existeEsteProducto (Producto producto){
+        
+        return this.productos.contains(producto);
+        
+    }
     
-        for(Producto p: productos){ 
-            if (p.equals(productos)) {
-                return true;
-            }
+    public String validarDatos (int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
+        
+        if(codigo < 0){
+            return ERROR_CODIGO;
+        }
+
+        if(descripcion == null || descripcion.isBlank()){
+            return ERROR_DESCRIPCION;
+        }
+
+        if(precio <= 0){
+            return ERROR_PRECIO;
+        }
+
+        if(categoria == null){
+            return ERROR_CATEGORIA;
+        }
+
+        if(estado == null){
+            return ERROR_ESTADO;
         }
         
-        return false;
-    }
+        return VALIDACION_EXITO;
+    } 
   
     public ArrayList <Producto> verProductosPorCategoria(Categoria categoria){
+        
     ArrayList<Producto> categoriaBuscada = new ArrayList<>();
         for(Producto p: productos){ 
             if (p.verCategoria() == categoria) {
@@ -142,11 +155,12 @@ public class GestorProductos {
     }
   
     public Producto obtenerProducto(Integer codigo){
-    for(Producto p: productos){
-        if(p.verCodigo() == codigo){
-            return p;
+        
+        for(Producto p: productos){
+            if(p.verCodigo() == codigo){
+                return p;
+            }
         }
-    }
         return null;
     }
     
