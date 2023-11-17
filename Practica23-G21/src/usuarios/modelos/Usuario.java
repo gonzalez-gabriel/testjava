@@ -17,12 +17,22 @@ public abstract class Usuario {
     private String apellido;
     private String correo;
     private String clave;
+    private Perfil perfil;
 
-    public Usuario(String correo, String clave, String apellido, String nombre) {
+    public Usuario(String correo, String clave, String apellido, String nombre, Perfil perfil) {
         this.correo = correo;
         this.clave = clave;
         this.apellido = apellido;
         this.nombre = nombre;
+        this.perfil = perfil;
+    }
+
+    public Perfil verPerfil() {
+        return perfil;
+    }
+
+    public void asignarPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 
     public String verNombre() {
