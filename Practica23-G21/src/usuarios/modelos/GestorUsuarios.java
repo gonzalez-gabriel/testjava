@@ -39,27 +39,11 @@ public class GestorUsuarios {
     }
     
     public String crearUsuario(String correo, String apellido, String nombre, String clave, String claveRepetida){
-        if ( correo == null || !correo.contains("@") ){
-            return ERROR_CORREO;
-        }
-        
-        if(apellido == null || apellido.isBlank()){
-            return ERROR_APELLIDO;
-        }
-        
-        if(nombre == null || nombre.isBlank()){
-            return ERROR_NOMBRE;
-        }
-        
-        if(clave == null ||  clave.isBlank()){
-            return ERROR_CLAVES;
-        }
-        
-        if(claveRepetida == null || claveRepetida.isBlank() || claveRepetida.equals(clave)){
-            return ERROR_CLAVES;
-        }
-        
-        return EXITO;
+        String validez = validarDatos(correo,apellido,nombre,clave,claveRepetida);
+        if (validez.equals(EXITO)) 
+            return EXITO;
+        else 
+            return validez;        
     }
     
     public ArrayList<Usuario> verUsuarios(){
@@ -96,5 +80,29 @@ public class GestorUsuarios {
         return null;
     }
     
-    
+    public String validarDatos (String correo, String apellido, String nombre, String clave , String claveRepetida) {
+        
+        if ( correo == null || !correo.contains("@") ){
+            return ERROR_CORREO;
+        }
+        
+        if(apellido == null || apellido.isBlank()){
+            return ERROR_APELLIDO;
+        }
+        
+        if(nombre == null || nombre.isBlank()){
+            return ERROR_NOMBRE;
+        }
+        
+        if(clave == null ||  clave.isBlank()){
+            return ERROR_CLAVES;
+        }
+        
+        if(claveRepetida == null || claveRepetida.isBlank() || claveRepetida.equals(clave)){
+            return ERROR_CLAVES;
+        }
+        
+        return EXITO;
+        
+    }
 }
