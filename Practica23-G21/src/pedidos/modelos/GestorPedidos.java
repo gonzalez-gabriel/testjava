@@ -4,6 +4,16 @@
  */
 package pedidos.modelos;
 
+import interfaces.IGestorPedidos;
+import static interfaces.IGestorPedidos.ERROR_CLIENTE;
+import static interfaces.IGestorPedidos.ERROR_FECHA;
+import static interfaces.IGestorPedidos.ERROR_HORA;
+import static interfaces.IGestorPedidos.ERROR_NUMERO;
+import static interfaces.IGestorPedidos.ERROR_PRODUCTOS_DEL_PEDIDO;
+import static interfaces.IGestorPedidos.PEDIDOS_DUPLICADOS;
+import static interfaces.IGestorPedidos.PEDIDO_INEXISTENTE;
+import static interfaces.IGestorProductos.VALIDACION_EXITO;
+import static interfaces.IGestorUsuarios.EXITO;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -15,7 +25,7 @@ import usuarios.modelos.Cliente;
  *
  * @author gabri
  */
-public class GestorPedidos {
+public class GestorPedidos implements IGestorPedidos {
     private ArrayList <Pedido> pedidos = new ArrayList<>();
     private static GestorPedidos gestor;
     
@@ -24,17 +34,17 @@ public class GestorPedidos {
       
     }
     
-    public static final String EXITO = "Pedido creado/modificado/cancelado con éxito";
-    public static final String ERROR_NUMERO = "El numero del pedido es invalido";
-    public static final String ERROR_FECHA = "La fecha del pedido es incorrecta";
-    public static final String ERROR_HORA = "La hora del pedido es incorrecta";
-    public static final String ERROR_PRODUCTOS_DEL_PEDIDO = "El pedido no tiene productos";
-    public static final String ERROR_CLIENTE = "El pedido no tiene un cliente";
-    public static final String ERROR_ESTADO = "El pedido no tiene un estado";
-    public static final String ERROR_CANCELAR = "No se puede cancelar el pedido en este estado";
-    public static final String PEDIDOS_DUPLICADOS = "Ya existe un pedido con ese número";
-    public static final String PEDIDO_INEXISTENTE = "No existe el pedido especificado";
-    public static final String VALIDACION_EXITO = "El pedido tiene los datos correctos";
+//    public static final String EXITO = "Pedido creado/modificado/cancelado con éxito";
+//    public static final String ERROR_NUMERO = "El numero del pedido es invalido";
+//    public static final String ERROR_FECHA = "La fecha del pedido es incorrecta";
+//    public static final String ERROR_HORA = "La hora del pedido es incorrecta";
+//    public static final String ERROR_PRODUCTOS_DEL_PEDIDO = "El pedido no tiene productos";
+//    public static final String ERROR_CLIENTE = "El pedido no tiene un cliente";
+//    public static final String ERROR_ESTADO = "El pedido no tiene un estado";
+//    public static final String ERROR_CANCELAR = "No se puede cancelar el pedido en este estado";
+//    public static final String PEDIDOS_DUPLICADOS = "Ya existe un pedido con ese número";
+//    public static final String PEDIDO_INEXISTENTE = "No existe el pedido especificado";
+//    public static final String VALIDACION_EXITO = "El pedido tiene los datos correctos";
     
     
     public static GestorPedidos crear(){

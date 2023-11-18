@@ -4,28 +4,29 @@
  */
 package usuarios.modelos;
 
+import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
 
 /**
  *
  * @author gabri
  */
-public class GestorUsuarios {
+public class GestorUsuarios implements IGestorUsuarios {
 
     private ArrayList<Usuario> usuarios = new ArrayList<>();
     private static GestorUsuarios gestor;
 
-    public static final String EXITO = "Usuario creado/modificado con éxito";
-    public static final String ERROR_CORREO = "El correo del usuario es incorrecto";
-    public static final String ERROR_APELLIDO = "El apellido del usuario es incorrecto";
-    public static final String ERROR_NOMBRE = "El nombre del usuario es incorrecto";
-    public static final String ERROR_CLAVES = "Las claves especificadas no coinciden o son incorrectas";
-    public static final String ERROR_PERFIL = "El perfil del usuario es incorrecto";
-    public static final String PERFIL_CAMBIO = "El usuario no puede cambiarse de perfil";
-    public static final String ERROR_PERMISOS = "No se tienen los permisos para realizar esta funcionalidad";
-    public static final String USUARIOS_DUPLICADOS = "Ya existe un usuario con esecorreo";
-    public static final String USUARIO_INEXISTENTE = "No existe el usuario especificado";
-    public static final String VALIDACION_EXITO = "Los datos del usuario son correctos";
+//    public static final String EXITO = "Usuario creado/modificado con éxito";
+//    public static final String ERROR_CORREO = "El correo del usuario es incorrecto";
+//    public static final String ERROR_APELLIDO = "El apellido del usuario es incorrecto";
+//    public static final String ERROR_NOMBRE = "El nombre del usuario es incorrecto";
+//    public static final String ERROR_CLAVES = "Las claves especificadas no coinciden o son incorrectas";
+//    public static final String ERROR_PERFIL = "El perfil del usuario es incorrecto";
+//    public static final String PERFIL_CAMBIO = "El usuario no puede cambiarse de perfil";
+//    public static final String ERROR_PERMISOS = "No se tienen los permisos para realizar esta funcionalidad";
+//    public static final String USUARIOS_DUPLICADOS = "Ya existe un usuario con esecorreo";
+//    public static final String USUARIO_INEXISTENTE = "No existe el usuario especificado";
+//    public static final String VALIDACION_EXITO = "Los datos del usuario son correctos";
 
     private GestorUsuarios() {
 
@@ -131,5 +132,17 @@ public class GestorUsuarios {
 
         return EXITO;
 
+    }
+    
+    public String borrarUsuario(Usuario usuario){
+        if(!usuario.verPedidos().isEmpty()){
+            return ERROR_PERMISOS;
+        }
+        for(Usuario u: usuarios){
+            if(u.equals(usuario)){
+                usuarios.remove(u);
+            }
+        }
+        return BORRADO_EXITOSO;
     }
 }
