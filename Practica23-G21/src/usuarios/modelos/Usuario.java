@@ -66,7 +66,7 @@ public abstract class Usuario {
     public void asignarClave(String clave) {
         this.clave = clave;
     }
-
+    
     @Override
     public String toString() {
         return "\nUsuario" + "\nNombre=" + nombre + "\n Apellido=" + apellido + "\n Correo=" + correo + "\n Perfil=" + perfil + "\n";

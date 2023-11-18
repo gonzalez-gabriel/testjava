@@ -67,6 +67,9 @@ public class GestorPedidos {
     }
     
     public String cambiarEstado(Pedido pedidoAModificar){
+        if (!this.pedidos.contains(pedidoAModificar)) {
+            return PEDIDO_INEXISTENTE;
+        }
         if (pedidoAModificar.verEstado() == Estado.CREANDO) {
             pedidoAModificar.asignarEstado(Estado.PROCESANDO);
         }
@@ -116,7 +119,7 @@ public class GestorPedidos {
     
     public String validarDatos (int numero, LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente) {
         
-        if (numero < 0) {
+        if (numero <= 0) {
             return ERROR_NUMERO;
         }
         
@@ -132,7 +135,7 @@ public class GestorPedidos {
             return ERROR_CLIENTE;
         }
         
-        if (productosDelPedido.isEmpty() || productosDelPedido == null) {
+        if (productosDelPedido == null) {
             return ERROR_PRODUCTOS_DEL_PEDIDO;
         }
         
