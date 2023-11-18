@@ -21,4 +21,6 @@ public enum Perfil {
     public String toString() {
         return otraCadena;
     }
+    
+    
 }

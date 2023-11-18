@@ -68,6 +68,11 @@ public abstract class Usuario {
     }
 
     @Override
+    public String toString() {
+        return "\nUsuario" + "\nNombre=" + nombre + "\n Apellido=" + apellido + "\n Correo=" + correo + "\n Perfil=" + perfil + "\n";
+    }
+
+    @Override
     public int hashCode() {
         int hash = 7;
         hash = 97 * hash + Objects.hashCode(this.correo);
