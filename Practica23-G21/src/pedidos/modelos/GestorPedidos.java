@@ -20,6 +20,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
+import interfaces.*;
 
 /**
  *
@@ -30,21 +31,9 @@ public class GestorPedidos implements IGestorPedidos {
     private static GestorPedidos gestor;
     
     
-    private GestorPedidos(){
+    private GestorPedidos() {
       
     }
-    
-//    public static final String EXITO = "Pedido creado/modificado/cancelado con éxito";
-//    public static final String ERROR_NUMERO = "El numero del pedido es invalido";
-//    public static final String ERROR_FECHA = "La fecha del pedido es incorrecta";
-//    public static final String ERROR_HORA = "La hora del pedido es incorrecta";
-//    public static final String ERROR_PRODUCTOS_DEL_PEDIDO = "El pedido no tiene productos";
-//    public static final String ERROR_CLIENTE = "El pedido no tiene un cliente";
-//    public static final String ERROR_ESTADO = "El pedido no tiene un estado";
-//    public static final String ERROR_CANCELAR = "No se puede cancelar el pedido en este estado";
-//    public static final String PEDIDOS_DUPLICADOS = "Ya existe un pedido con ese número";
-//    public static final String PEDIDO_INEXISTENTE = "No existe el pedido especificado";
-//    public static final String VALIDACION_EXITO = "El pedido tiene los datos correctos";
     
     
     public static GestorPedidos crear(){
@@ -55,6 +44,7 @@ public class GestorPedidos implements IGestorPedidos {
         return gestor;
     }
     
+    @Override
     public String crearPedido(int numero, LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente){
         
         String validez = validarDatos(numero,fecha,hora,productosDelPedido,cliente);
@@ -76,6 +66,7 @@ public class GestorPedidos implements IGestorPedidos {
         
     }
     
+    @Override
     public String cambiarEstado(Pedido pedidoAModificar){
         if (!this.pedidos.contains(pedidoAModificar)) {
             return PEDIDO_INEXISTENTE;
@@ -90,10 +81,12 @@ public class GestorPedidos implements IGestorPedidos {
         return EXITO;
     }
     
+    @Override
     public ArrayList<Pedido> verPedidos(){
         return this.pedidos;
     }
     
+    @Override
     public boolean hayPedidosConEsteCliente(Cliente cliente){
         for (Pedido p: pedidos) {
             if (p.verUnCliente().equals(cliente)) {
@@ -103,6 +96,7 @@ public class GestorPedidos implements IGestorPedidos {
         return false;
     }
     
+    @Override
     public boolean hayPedidosConEsteProducto(Producto producto){
         for (Pedido p : pedidos) {
             for (ProductoDelPedido pdp: p.verPdp()) {
@@ -114,10 +108,12 @@ public class GestorPedidos implements IGestorPedidos {
         return false;
     }
     
+    @Override
     public boolean existeEstePedido(Pedido pedido){
         return this.pedidos.contains(pedido);
     }
     
+    @Override
     public Pedido obtenerPedido(Integer numero){
         for (Pedido p : this.pedidos) {
             if (p.verNumero() == numero) {
@@ -127,6 +123,18 @@ public class GestorPedidos implements IGestorPedidos {
         return null;
     }
     
+    @Override
+    public String cancelarPedido (Pedido pedido) {
+        for (Pedido p : this.pedidos) {
+            if (pedido.equals(p)) {
+                p.verUnCliente().cancelarPedido(p);
+            }
+        }
+        this.pedidos.remove(pedido);
+        return EXITO;
+    }
+    
+    @Override
     public String validarDatos (int numero, LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente) {
         
         if (numero <= 0) {

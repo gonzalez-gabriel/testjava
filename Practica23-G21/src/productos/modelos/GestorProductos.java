@@ -3,33 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package productos.modelos;
-
-import interfaces.IGestorProductos;
+import interfaces.*;
 import java.util.ArrayList;
+import pedidos.modelos.Pedido;
+import pedidos.modelos.GestorPedidos;
+import pedidos.modelos.ProductoDelPedido;
 
 /**
  *
  * @author gabri
  */
 public class GestorProductos implements IGestorProductos {
-    private ArrayList <Producto> productos = new ArrayList<>();
+    
     private static GestorProductos gestor;
-    
-//    public static final String EXITO_CREADO = "Producto creado/modificado exitosamente";
-//    public static final String EXITO_MODIFICADO = "Producto modificado exitosamente";
-//    public static final String ERROR_CODIGO = "El código del producto es incorrecto";
-//    public static final String ERROR_DESCRIPCION = "La descripción del producto es incorrecta";
-//
-//    public static final String ERROR_PRECIO = "El precio del producto es incorrecto";
-//    public static final String ERROR_CATEGORIA = "La categoría del producto es incorrecta";
-//
-//    public static final String ERROR_ESTADO = "El estado es incorrecto";
-//    public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese código";
-//
-//    public static final String VALIDACION_EXITO = "Los datos del producto son correctos";
-//
-//    public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
-    
+    private ArrayList <Producto> productos = new ArrayList<>();  
     
     
     private GestorProductos(){
@@ -45,6 +32,7 @@ public class GestorProductos implements IGestorProductos {
     
     }
     
+    @Override
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         
         String validez = validarDatos(codigo,descripcion,precio,categoria,estado);
@@ -65,6 +53,7 @@ public class GestorProductos implements IGestorProductos {
         }
     }
     
+    @Override
     public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         
         if (!this.productos.isEmpty() && this.productos.contains(productoAModificar)) {   
@@ -118,11 +107,13 @@ public class GestorProductos implements IGestorProductos {
         
     }
 
+    @Override
     public ArrayList<Producto> menu(){
         return this.productos;
     }
    
     
+    @Override
     public ArrayList<Producto> buscarProductos(String descripcion){
         if (descripcion.isBlank() || descripcion.isEmpty()) {
             return null;
@@ -136,12 +127,14 @@ public class GestorProductos implements IGestorProductos {
         return descripcionBuscada;
     }
   
+    @Override
     public boolean existeEsteProducto (Producto producto){
         
         return this.productos.contains(producto);
         
     }
     
+    @Override
     public String validarDatos (int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
         
         if(codigo < 0){
@@ -167,6 +160,7 @@ public class GestorProductos implements IGestorProductos {
         return VALIDACION_EXITO;
     } 
   
+    @Override
     public ArrayList <Producto> verProductosPorCategoria(Categoria categoria){
         
     ArrayList<Producto> categoriaBuscada = new ArrayList<>();
@@ -178,6 +172,7 @@ public class GestorProductos implements IGestorProductos {
         return categoriaBuscada;
     }
   
+    @Override
     public Producto obtenerProducto(Integer codigo){
         
         for(Producto p: productos){
@@ -186,6 +181,20 @@ public class GestorProductos implements IGestorProductos {
             }
         }
         return null;
+    }
+    
+    @Override
+    public String borrarProducto(Producto producto) {
+        GestorPedidos gped = GestorPedidos.crear();
+        for (Pedido p : gped.verPedidos()) {
+            for (ProductoDelPedido pdp : p.verPdp()) {
+                if(producto.equals(pdp.verProducto())) {
+                    return ERROR_BORRADO;
+                }
+            }
+        }
+        this.productos.remove(producto);
+        return EXITO_BORRADO;
     }
     
 }

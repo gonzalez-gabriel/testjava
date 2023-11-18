@@ -18,11 +18,10 @@ public class Empleado extends Usuario {
         super(correo,clave,apellido,nombre, perfil);
     } 
     
-    GestorPedidos gp = GestorPedidos.crear();
-    
     @Override
     public ArrayList<Pedido> verPedidos(){
-            return(gp.verPedidos());    
+        GestorPedidos gp = GestorPedidos.crear();
+        return(gp.verPedidos());
     }
     
 }

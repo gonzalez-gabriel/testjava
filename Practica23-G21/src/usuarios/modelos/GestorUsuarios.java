@@ -6,6 +6,7 @@ package usuarios.modelos;
 
 import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
+import interfaces.*;
 
 /**
  *
@@ -15,18 +16,6 @@ public class GestorUsuarios implements IGestorUsuarios {
 
     private ArrayList<Usuario> usuarios = new ArrayList<>();
     private static GestorUsuarios gestor;
-
-//    public static final String EXITO = "Usuario creado/modificado con éxito";
-//    public static final String ERROR_CORREO = "El correo del usuario es incorrecto";
-//    public static final String ERROR_APELLIDO = "El apellido del usuario es incorrecto";
-//    public static final String ERROR_NOMBRE = "El nombre del usuario es incorrecto";
-//    public static final String ERROR_CLAVES = "Las claves especificadas no coinciden o son incorrectas";
-//    public static final String ERROR_PERFIL = "El perfil del usuario es incorrecto";
-//    public static final String PERFIL_CAMBIO = "El usuario no puede cambiarse de perfil";
-//    public static final String ERROR_PERMISOS = "No se tienen los permisos para realizar esta funcionalidad";
-//    public static final String USUARIOS_DUPLICADOS = "Ya existe un usuario con esecorreo";
-//    public static final String USUARIO_INEXISTENTE = "No existe el usuario especificado";
-//    public static final String VALIDACION_EXITO = "Los datos del usuario son correctos";
 
     private GestorUsuarios() {
 
@@ -39,8 +28,9 @@ public class GestorUsuarios implements IGestorUsuarios {
 
         return gestor;
     }
-
-    public String crearUsuario(String correo, String apellido, String nombre, String clave, String claveRepetida, Perfil perfil) {
+    
+    @Override
+    public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida) {
         String validez = validarDatos(correo, apellido, nombre, clave, claveRepetida, perfil);
         if (validez.equals(EXITO)) {
             Usuario u;
@@ -68,10 +58,12 @@ public class GestorUsuarios implements IGestorUsuarios {
         }
     }
 
+    @Override
     public ArrayList<Usuario> verUsuarios() {
         return this.usuarios;
     }
 
+    @Override
     public ArrayList<Usuario> buscarUsuarios(String apellido) {
         if (apellido.isBlank() || apellido.isEmpty()) {
             return null;
@@ -87,12 +79,14 @@ public class GestorUsuarios implements IGestorUsuarios {
         return apellidoBuscado;
     }
 
+    @Override
     public boolean existeEsteUsuario(Usuario usuario) {
 
         return this.usuarios.contains(usuario);
 
     }
 
+    @Override
     public Usuario obtenerUsuario(String correo) {
 
         for (Usuario u : usuarios) {
@@ -104,6 +98,7 @@ public class GestorUsuarios implements IGestorUsuarios {
         return null;
     }
 
+    @Override
     public String validarDatos(String correo, String apellido, String nombre, String clave, String claveRepetida, Perfil perfil) {
 
         if (correo == null || !correo.contains("@")) {
@@ -134,6 +129,7 @@ public class GestorUsuarios implements IGestorUsuarios {
 
     }
     
+    @Override
     public String borrarUsuario(Usuario usuario){
         if(!usuario.verPedidos().isEmpty()){
             return ERROR_PERMISOS;

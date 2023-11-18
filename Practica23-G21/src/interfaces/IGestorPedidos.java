@@ -3,21 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package interfaces;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import pedidos.modelos.Pedido;
-import pedidos.modelos.ProductoDelPedido;
+import pedidos.modelos.*;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
 
 /**
  *
- * @author gabri
+ * @author USUARIO
  */
 public interface IGestorPedidos {
-
+    
     public static final String EXITO = "Pedido creado/modificado/cancelado con éxito";
     public static final String ERROR_NUMERO = "El numero del pedido es invalido";
     public static final String ERROR_FECHA = "La fecha del pedido es incorrecta";
@@ -30,21 +28,13 @@ public interface IGestorPedidos {
     public static final String PEDIDO_INEXISTENTE = "No existe el pedido especificado";
     public static final String VALIDACION_EXITO = "El pedido tiene los datos correctos";
     
-    public String validarDatos (int numero, LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente);
-
-    public String crearPedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente);
-
+    public String crearPedido(int numeto, LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente);
     public String cambiarEstado(Pedido pedidoAModificar);
-
     public ArrayList<Pedido> verPedidos();
-
     public boolean hayPedidosConEsteCliente(Cliente cliente);
-
     public boolean hayPedidosConEsteProducto(Producto producto);
-
     public String cancelarPedido(Pedido pedido);
-
     public boolean existeEstePedido(Pedido pedido);
-
     public Pedido obtenerPedido(Integer numero);
+    public String validarDatos (int numero, LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente);
 }
