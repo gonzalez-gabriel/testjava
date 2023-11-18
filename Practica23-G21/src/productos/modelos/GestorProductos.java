@@ -123,6 +123,9 @@ public class GestorProductos {
    
     
     public ArrayList<Producto> buscarProductos(String descripcion){
+        if (descripcion.isBlank() || descripcion.isEmpty()) {
+            return null;
+        }
         ArrayList<Producto> descripcionBuscada = new ArrayList<>();
         for(Producto p: productos){ 
             if (p.verDescripcion().equals(descripcion) || p.verDescripcion().startsWith(descripcion)) {
