@@ -100,6 +100,11 @@ public class Pedido {
         final Pedido other = (Pedido) obj;
         return this.numero == other.numero;
     }
+
+    @Override
+    public String toString() {
+        return "Pedido: " + numero + "\nFecha: "  + fechaYHora.toLocalDate() + "\nHora: " + fechaYHora.toLocalTime() + "\nEstado: " + estado + "\nCliente: " + unCliente + "\nProductosDelPedido=" + productosDelPedido;
+    }
     
     
    

@@ -47,9 +47,10 @@ public class GestorUsuarios {
                 u = new Cliente(correo, clave, apellido, nombre, perfil);
             } 
             
-            if (perfil == Perfil.EMPLEADO) {
+            else if (perfil == Perfil.EMPLEADO) {
                 u = new Empleado(correo, clave, apellido, nombre, perfil);
-            } else {
+            } 
+            else {
                 u = new Encargado(correo, clave, apellido, nombre, perfil);
             }
 
