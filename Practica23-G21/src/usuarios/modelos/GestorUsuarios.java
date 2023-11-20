@@ -129,23 +129,12 @@ public class GestorUsuarios implements IGestorUsuarios {
 
     }
     
-    
-    
-    /***********************************************CHEQUEAMOS QUE ESTE VACIO EL ARRAYLIST DE USUARIO?    ******************************+*/
     @Override
     public String borrarUsuario(Usuario usuario){
-//        if(usuarios == null || usuarios.isEmpty() ){
-//            return ERROR_PERMISOS;
-//        }
-        if(!usuario.verPedidos().isEmpty() && !usuario.verPerfil().equals(Perfil.CLIENTE)){
+        if((usuario.verPerfil().equals(Perfil.CLIENTE)) && (!usuario.verPedidos().isEmpty())){
             return ERROR_PERMISOS;
         }
-        
-        
-            
-                usuarios.remove(usuario);
-            
-        
+        this.usuarios.remove(usuario);             
         return BORRADO_EXITOSO;
     }
 }

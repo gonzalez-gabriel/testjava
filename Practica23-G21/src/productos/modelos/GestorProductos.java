@@ -185,6 +185,10 @@ public class GestorProductos implements IGestorProductos {
     
     @Override
     public String borrarProducto(Producto producto) {
+        GestorProductos gp = GestorProductos.crear();
+        if (gp.menu().isEmpty()) {
+            return ERROR_BORRADO;
+        }
         GestorPedidos gped = GestorPedidos.crear();
         for (Pedido p : gped.verPedidos()) {
             for (ProductoDelPedido pdp : p.verPdp()) {
