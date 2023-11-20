@@ -33,10 +33,11 @@ public class ControladorPrincipal  {
         GestorUsuarios gu = GestorUsuarios.crear();
         GestorProductos gp = GestorProductos.crear();
         GestorPedidos gped = GestorPedidos.crear();
-        System.out.println(gu.crearUsuario("mail1@hotmail.com", "Apellido1", "nombre1", "clave1", "clave1", Perfil.CLIENTE));
-        System.out.println(gu.crearUsuario("mail2@hotmail.com", "Apellido2", "nombre2", "clave2", "clave2", Perfil.ENCARGADO));
-        System.out.println(gu.crearUsuario("mail3@hotmail.com", "Apellido3", "nombre3", "clave3", "clave3", Perfil.EMPLEADO));
-        System.out.println(gu.crearUsuario("mail4@hotmail.com", "Apellido4", "nombre4", "clave4", "clave4", Perfil.CLIENTE));
+//        System.out.println(gu.crearUsuario("mail1@hotmail.com", "Apellido1", "nombre1", Perfil.CLIENTE, "clave1", "clave1"));
+//        System.out.println(gu.crearUsuario("mail2@hotmail.com", "Apellido2", "nombre2", Perfil.CLIENTE, "clave2", "clave2"));
+//        System.out.println(gu.crearUsuario("mail3@hotmail.com", "Apellido3", "nombre3", Perfil.CLIENTE, "clave3", "clave3"));
+//        System.out.println(gu.crearUsuario("mail4@hotmail.com", "Apellido4", "nombre4", Perfil.CLIENTE, "clave4", "clave4"));
+        
 //        System.out.println(gu.verUsuarios());
 //        System.out.println(gu.buscarUsuarios(""));
 //          System.out.println(gu.existeEsteUsuario(gu.verUsuarios().get(0)));
@@ -44,10 +45,13 @@ public class ControladorPrincipal  {
         System.out.println(gp.crearProducto(2,"Milanga" , 20, Categoria.PLATOPRINCIPAL, productos.modelos.Estado.DISPONIBLE));
         System.out.println(gp.crearProducto(3,"Helado gridito" , 30, Categoria.POSTRE, productos.modelos.Estado.DISPONIBLE));
         System.out.println(gp.crearProducto(4,"Choriflan" , 40, Categoria.PLATOPRINCIPAL, productos.modelos.Estado.DISPONIBLE));
-        ArrayList<ProductoDelPedido> pdps = new ArrayList<>();
-        pdps.add(new ProductoDelPedido(gp.menu().get(0),1));
-        System.out.println(gped.crearPedido(1, LocalDate.now(), LocalTime.now(),pdps, (Cliente)gu.verUsuarios().get(0)));
-        System.out.println(gped.verPedidos());
+//        ArrayList<ProductoDelPedido> pdps = new ArrayList<>();
+//        pdps.add(new ProductoDelPedido(gp.menu().get(0),1));
+//        System.out.println(gped.crearPedido(1, LocalDate.now(), LocalTime.now(),pdps, (Cliente)gu.verUsuarios().get(0)));
+//        System.out.println(gped.verPedidos());
+        System.out.println(gu.verUsuarios());
+        System.out.println(gu.borrarUsuario(gu.verUsuarios().get(1)));
+        
         
     }
 }

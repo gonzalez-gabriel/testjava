@@ -44,6 +44,11 @@ public class ProductoDelPedido {
     }
 
     @Override
+    public String toString() {
+        return "ProductoDelPedido{" + "unProducto=" + unProducto + '}';
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
