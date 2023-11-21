@@ -69,7 +69,7 @@ public abstract class Usuario {
     
     @Override
     public String toString() {
-        return "\nUsuario" + "\nNombre=" + nombre + "\n Apellido=" + apellido + "\n Correo=" + correo + "\n Perfil=" + perfil + "\n";
+        return "\nNombre: " + nombre + "\nApellido: " + apellido + "\nCorreo: " + correo + "\nPerfil: " + perfil;
     }
 
     @Override

@@ -37,15 +37,17 @@ public class ProductoDelPedido {
     }
 
     @Override
+    public String toString() {
+        return "\nProducto: " + unProducto + "\nCandidad: " + cantidad + "\n";
+    }
+    
+    
+
+    @Override
     public int hashCode() {
         int hash = 7;
         hash = 29 * hash + Objects.hashCode(this.unProducto);
         return hash;
-    }
-
-    @Override
-    public String toString() {
-        return "ProductoDelPedido{" + "unProducto=" + unProducto + '}';
     }
 
     @Override

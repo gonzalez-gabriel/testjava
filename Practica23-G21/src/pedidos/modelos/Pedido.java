@@ -103,7 +103,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido: " + numero + "\nFecha: "  + fechaYHora.toLocalDate() + "\nHora: " + fechaYHora.toLocalTime() + "\nEstado: " + estado + "\nCliente: " + unCliente + "\nProductosDelPedido=" + productosDelPedido;
+        return "\nPedido: " + numero + "\nFecha: "  + fechaYHora.toLocalDate() + "\nHora: " + fechaYHora.toLocalTime() + "\nEstado: " + estado + "\nCliente: " + unCliente + "\nProductosDelPedido: " + productosDelPedido + "\n";
     }
     
     
