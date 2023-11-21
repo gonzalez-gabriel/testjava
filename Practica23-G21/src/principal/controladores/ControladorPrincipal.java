@@ -29,7 +29,7 @@ public class ControladorPrincipal  {
 //        System.out.println(gp.crearProducto(4,"Choriflan" , 40, Categoria.PLATOPRINCIPAL, Estado.DISPONIBLE));
   
         
-        
+       
         GestorUsuarios gu = GestorUsuarios.crear();
         GestorProductos gp = GestorProductos.crear();
         GestorPedidos gped = GestorPedidos.crear();
