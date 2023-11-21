@@ -6,7 +6,8 @@ package usuarios.modelos;
 
 import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
-import interfaces.*;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
@@ -28,6 +29,8 @@ public class GestorUsuarios implements IGestorUsuarios {
 
         return gestor;
     }
+    
+    
     
     @Override
     public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida) {
@@ -60,6 +63,17 @@ public class GestorUsuarios implements IGestorUsuarios {
 
     @Override
     public ArrayList<Usuario> verUsuarios() {
+        
+        Comparator <Usuario> aynComp = (Usuario u1, Usuario u2) -> {
+                if(!u1.verApellido().equals(u2.verApellido())){
+                return u1.verApellido().compareTo(u2.verApellido());
+                }
+                else{
+        
+                return u1.verNombre().compareTo(u2.verNombre());
+                }
+        };
+        Collections.sort(usuarios,aynComp);
         return this.usuarios;
     }
 
