@@ -25,7 +25,7 @@ public class GestorProductos implements IGestorProductos {
     
     }
     
-    public static GestorProductos crear(){
+    public static GestorProductos instanciar(){
         if(gestor == null){
             gestor = new GestorProductos();
         }
@@ -208,11 +208,11 @@ public class GestorProductos implements IGestorProductos {
     
     @Override
     public String borrarProducto(Producto producto) {
-        GestorProductos gp = GestorProductos.crear();
+        GestorProductos gp = GestorProductos.instanciar();
         if (gp.menu().isEmpty()) {
             return ERROR_BORRADO;
         }
-        GestorPedidos gped = GestorPedidos.crear();
+        GestorPedidos gped = GestorPedidos.instanciar();
         for (Pedido p : gped.verPedidos()) {
             for (ProductoDelPedido pdp : p.verPdp()) {
                 if(producto.equals(pdp.verProducto())) {

@@ -4,7 +4,7 @@
  */
 package usuarios.modelos;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import pedidos.modelos.Pedido;
 
@@ -95,9 +95,15 @@ public abstract class Usuario {
     }
     
     public void mostrar () {
+        if (this.apellido == null) {
+            this.apellido = "ERROR";
+        }
+        if (this.nombre == null) {
+            this.nombre = "ERROR";
+        }
         System.out.println(apellido + ", " + nombre);
         System.out.println("Correo: " + correo);
     }
     
-    public abstract ArrayList<Pedido> verPedidos();
+    public abstract List<Pedido> verPedidos();
 }
