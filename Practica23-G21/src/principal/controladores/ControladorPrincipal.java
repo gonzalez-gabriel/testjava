@@ -62,8 +62,8 @@ public class ControladorPrincipal  {
         System.out.println(gped.crearPedido(1, LocalDate.now(), LocalTime.now(),pdps2, (Cliente)gu.verUsuarios().get(0)));
         System.out.println(gped.crearPedido(2, LocalDate.now(), LocalTime.now(),pdps3, (Cliente)gu.verUsuarios().get(0)));
         System.out.println(gped.verPedidos());
-//        System.out.println(gu.verUsuarios());
-//        System.out.println(gu.borrarUsuario(gu.verUsuarios().get(1)));
+        System.out.println(gu.verUsuarios());
+        System.out.println(gu.borrarUsuario(gu.verUsuarios().get(1)));
         
         
         
