@@ -79,6 +79,8 @@ public class GestorUsuarios implements IGestorUsuarios {
 
     @Override
     public ArrayList<Usuario> buscarUsuarios(String apellido) {
+        
+        
         if (apellido.isBlank() || apellido.isEmpty()) {
             return null;
         }
@@ -89,8 +91,22 @@ public class GestorUsuarios implements IGestorUsuarios {
             }
 
         }
-
+        
+        Comparator <Usuario> OrdenApellidoNombre = (Usuario u1, Usuario u2) -> {
+            if(!u1.verApellido().equals(u2.verApellido())){
+                return u1.verApellido().compareTo(u2.verApellido());
+                }
+                else{
+        
+                return u1.verNombre().compareTo(u2.verNombre());
+                }
+        
+        };
+        
+        Collections.sort(apellidoBuscado, OrdenApellidoNombre);
         return apellidoBuscado;
+//
+//        return apellidoBuscado;
     }
 
     @Override
