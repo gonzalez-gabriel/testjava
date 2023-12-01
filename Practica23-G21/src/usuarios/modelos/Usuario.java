@@ -95,6 +95,12 @@ public abstract class Usuario {
     }
     
     public void mostrar () {
+        if (this.apellido == null) {
+            this.apellido = "ERROR";
+        }
+        if (this.nombre == null) {
+            this.nombre = "ERROR";
+        }
         System.out.println(apellido + ", " + nombre);
         System.out.println("Correo: " + correo);
     }

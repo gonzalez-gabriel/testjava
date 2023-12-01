@@ -22,7 +22,7 @@ public class GestorUsuarios implements IGestorUsuarios {
 
     }
 
-    public static GestorUsuarios crear() {
+    public static GestorUsuarios instanciar() {
         if (gestor == null) {
             gestor = new GestorUsuarios();
         }

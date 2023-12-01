@@ -6,6 +6,7 @@ package pedidos.modelos;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import usuarios.modelos.Cliente;
 
 /**
@@ -17,9 +18,9 @@ public class Pedido {
     private LocalDateTime fechaYHora;
     private Estado estado;
     private Cliente unCliente;
-    private ArrayList<ProductoDelPedido> productosDelPedido;
+    private List<ProductoDelPedido> productosDelPedido = new ArrayList<>();
 
-    public Pedido(int numero, LocalDateTime fechaYHora,ArrayList<ProductoDelPedido> pdp, Cliente unCliente) {
+    public Pedido(int numero, LocalDateTime fechaYHora,List<ProductoDelPedido> pdp, Cliente unCliente) {
         this.numero = numero;
         this.fechaYHora = fechaYHora;
         this.productosDelPedido = pdp;
@@ -71,11 +72,11 @@ public class Pedido {
         this.fechaYHora = this.fechaYHora.withYear(unaFecha.getYear());
     }
 
-    public ArrayList<ProductoDelPedido> verPdp() {
+    public List<ProductoDelPedido> verPdp() {
         return this.productosDelPedido;
     }
 
-    public void asignarPdp(ArrayList<ProductoDelPedido> pdp) {
+    public void asignarPdp(List<ProductoDelPedido> pdp) {
         this.productosDelPedido = pdp;
     }
 
@@ -112,7 +113,9 @@ public class Pedido {
     public void mostrar () {
         String patronFecha = "dd/MM/yyyy";
         String fechaFormateada = fechaYHora.format(DateTimeFormatter.ofPattern(patronFecha)); 
-        
+        if (fechaFormateada == null) {
+            fechaFormateada = "ERROR";
+        }
         System.out.println("Nro. " + numero);
         System.out.println("Fecha: " + fechaFormateada + "\tHora: " + fechaYHora.getHour()+":"+fechaYHora.getMinute());
         System.out.println("Cliente: " + unCliente.verNombre() + ", " + unCliente.verApellido());

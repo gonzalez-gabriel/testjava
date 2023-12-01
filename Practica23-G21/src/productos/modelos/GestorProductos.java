@@ -5,6 +5,8 @@
 package productos.modelos;
 import interfaces.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import pedidos.modelos.Pedido;
 import pedidos.modelos.GestorPedidos;
 import pedidos.modelos.ProductoDelPedido;
@@ -23,7 +25,7 @@ public class GestorProductos implements IGestorProductos {
     
     }
     
-    public static GestorProductos crear(){
+    public static GestorProductos instanciar(){
         if(gestor == null){
             gestor = new GestorProductos();
         }
@@ -109,6 +111,16 @@ public class GestorProductos implements IGestorProductos {
 
     @Override
     public ArrayList<Producto> menu(){
+        Comparator <Producto> catYDescComp = (Producto p1, Producto p2) -> {
+                if(!p1.verCategoria().equals(p2.verCategoria())){
+                return p1.verCategoria().compareTo(p2.verCategoria());
+                }
+                else{
+        
+                return p1.verDescripcion().compareTo(p2.verDescripcion());
+                }
+        };
+        Collections.sort(productos,catYDescComp);
         return this.productos;
     }
    
@@ -124,6 +136,15 @@ public class GestorProductos implements IGestorProductos {
                 descripcionBuscada.add(p);
             }
         }
+        Comparator <Producto> catYDescComp = (Producto p1, Producto p2) -> {
+                if(!p1.verCategoria().equals(p2.verCategoria())){
+                return p1.verCategoria().compareTo(p2.verCategoria());
+                }
+                else{
+                return p1.verDescripcion().compareTo(p2.verDescripcion());
+                }
+        };
+        Collections.sort(descripcionBuscada,catYDescComp);
         return descripcionBuscada;
     }
   
@@ -169,6 +190,8 @@ public class GestorProductos implements IGestorProductos {
                 categoriaBuscada.add(p);
             }
         }
+        Comparator <Producto> descComp = (Producto p1, Producto p2) -> p1.verDescripcion().compareTo(p2.verDescripcion());
+        Collections.sort(categoriaBuscada,descComp);
         return categoriaBuscada;
     }
   
@@ -185,11 +208,11 @@ public class GestorProductos implements IGestorProductos {
     
     @Override
     public String borrarProducto(Producto producto) {
-        GestorProductos gp = GestorProductos.crear();
+        GestorProductos gp = GestorProductos.instanciar();
         if (gp.menu().isEmpty()) {
             return ERROR_BORRADO;
         }
-        GestorPedidos gped = GestorPedidos.crear();
+        GestorPedidos gped = GestorPedidos.instanciar();
         for (Pedido p : gped.verPedidos()) {
             for (ProductoDelPedido pdp : p.verPdp()) {
                 if(producto.equals(pdp.verProducto())) {

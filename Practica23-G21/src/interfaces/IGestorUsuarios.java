@@ -4,8 +4,8 @@
  */
 package interfaces;
 
-import java.util.ArrayList;
 import java.util.List;
+import usuarios.modelos.GestorUsuarios;
 import usuarios.modelos.Perfil;
 import usuarios.modelos.Usuario;
 
@@ -28,7 +28,7 @@ public interface IGestorUsuarios {
     public static final String VALIDACION_EXITO = "Los datos del usuario son correctos";
     public static final String BORRADO_EXITOSO = "Se borro el usuario";
     
-     public String validarDatos(String correo, String apellido, String nombre, String clave, String claveRepetida, Perfil perfil);
+    public String validarDatos(String correo, String apellido, String nombre, String clave, String claveRepetida, Perfil perfil);
 
     public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida);
 

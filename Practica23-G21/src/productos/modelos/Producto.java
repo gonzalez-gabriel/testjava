@@ -104,6 +104,9 @@ public class Producto {
     
     public void mostrar() {
 //        System.out.println("Producto: " + nombre);
+        if (this.descripcion == null) {
+            this.descripcion = "ERROR";
+        }
         System.out.println("Descripcion: " + descripcion);
         System.out.println("Precio: " + precio);
         System.out.println("Categoria: " + categoria);
