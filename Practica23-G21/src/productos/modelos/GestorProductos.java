@@ -30,7 +30,7 @@ public class GestorProductos implements IGestorProductos {
     
     
     private GestorProductos(){
-    
+        this.leerArchivo();
     }
     
     public static GestorProductos instanciar(){
@@ -53,7 +53,7 @@ public class GestorProductos implements IGestorProductos {
                 p = null;
                 return PRODUCTOS_DUPLICADOS;               
             }
-            else {
+            else {               
                 this.productos.add(p);
                 return EXITO_CREADO;
             }            
