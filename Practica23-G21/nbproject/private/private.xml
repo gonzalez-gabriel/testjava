@@ -3,19 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/interfaces/IGestorPedidos.java</file>
-            <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/pedidos/modelos/GestorPedidos.java</file>
-            <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/usuarios/modelos/GestorUsuarios.java</file>
-            <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/usuarios/modelos/Empleado.java</file>
-            <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/usuarios/modelos/Cliente.java</file>
+            <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/productos/modelos/GestorProductos.java</file>
             <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/principal/controladores/ControladorPrincipal.java</file>
-            <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/pedidos/modelos/Pedido.java</file>
-            <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/usuarios/modelos/Usuario.java</file>
-            <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/usuarios/modelos/Encargado.java</file>
-            <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/pedidos/modelos/ProductoDelPedido.java</file>
-            <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/interfaces/IGestorUsuarios.java</file>
             <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/productos/modelos/Producto.java</file>
-            <file>file:/C:/G21-GonzalezOrdonez/Practica23-G21/src/usuarios/modelos/Perfil.java</file>
         </group>
     </open-files>
 </project-private>
