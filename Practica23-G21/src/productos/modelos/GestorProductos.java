@@ -18,7 +18,7 @@ import pedidos.modelos.ProductoDelPedido;
 public class GestorProductos implements IGestorProductos {
     
     private static GestorProductos gestor;
-    private ArrayList <Producto> productos = new ArrayList<>();  
+    private ArrayList <Producto> productos;  
     
     
     private GestorProductos(){
