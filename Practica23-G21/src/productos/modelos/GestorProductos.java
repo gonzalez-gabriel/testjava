@@ -4,6 +4,12 @@
  */
 package productos.modelos;
 import interfaces.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import static java.lang.Float.parseFloat;
+import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -18,11 +24,11 @@ import pedidos.modelos.ProductoDelPedido;
 public class GestorProductos implements IGestorProductos {
     
     private static GestorProductos gestor;
-    private ArrayList <Producto> productos;  
+    private ArrayList <Producto> productos = new ArrayList<>();  
     
     
     private GestorProductos(){
-    
+        this.leerArchivo();
     }
     
     public static GestorProductos instanciar(){
@@ -45,7 +51,7 @@ public class GestorProductos implements IGestorProductos {
                 p = null;
                 return PRODUCTOS_DUPLICADOS;               
             }
-            else {
+            else {               
                 this.productos.add(p);
                 return EXITO_CREADO;
             }            
@@ -222,6 +228,41 @@ public class GestorProductos implements IGestorProductos {
         }
         this.productos.remove(producto);
         return EXITO_BORRADO;
+    }
+    
+    private void leerArchivo() {
+        BufferedReader br = null;
+        File file = new File("./Productos.txt");
+        
+        if (file.exists()) {
+            try {
+                FileReader fr = new FileReader(file);
+                br = new BufferedReader(fr);
+                while(br.readLine() != null) {
+                    String[] vector = br.readLine().split(",");
+                    int codigo = parseInt(vector[0]);
+                    String descripcion = vector[1];
+                    float precio = parseFloat(vector[2]);
+                    Categoria categoria = Categoria.valueOf(vector[3]);
+                    Estado estado = Estado.valueOf(vector[4]);                           
+                    Producto p = new Producto(codigo,descripcion,categoria,estado,precio);
+                    this.productos.add(p);
+                }
+            }
+            catch (IOException ioe) {
+                System.out.println("No se pudo leer el archivo.");
+            }
+            finally {
+                if (br != null) {
+                    try {
+                        br.close();
+                    }
+                    catch (IOException ioe) {
+                        ioe.printStackTrace();
+                    }
+                }
+            }
+        }
     }
     
 }
