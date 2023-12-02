@@ -75,7 +75,7 @@ public class GestorProductos implements IGestorProductos {
      
             
                 int i = this.productos.indexOf(productoAModificar);
-                productoAModificar.AsignarCodigo(codigo);
+//                productoAModificar.AsignarCodigo(codigo);
                 productoAModificar.asignarDescripcion(descripcion);
                 productoAModificar.asignarPrecio(precio);
                 productoAModificar.asignarCategoria(categoria);
@@ -167,7 +167,7 @@ public class GestorProductos implements IGestorProductos {
     @Override
     public String validarDatos (int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
         
-        if(codigo < 0){
+        if(codigo <= 0){
             return ERROR_CODIGO;
         }
 
@@ -242,7 +242,7 @@ public class GestorProductos implements IGestorProductos {
                 FileReader fr = new FileReader(file);
                 br = new BufferedReader(fr);
                 while(br.readLine() != null) {
-                    String[] vector = br.readLine().split(",");
+                    String[] vector = br.readLine().split(";");
                     int codigo = parseInt(vector[0]);
                     String descripcion = vector[1];
                     float precio = parseFloat(vector[2]);

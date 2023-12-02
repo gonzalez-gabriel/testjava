@@ -107,6 +107,7 @@ public class Producto {
         if (this.descripcion == null) {
             this.descripcion = "ERROR";
         }
+        System.out.println("Codigo:" + codigo);
         System.out.println("Descripcion: " + descripcion);
         System.out.println("Precio: " + precio);
         System.out.println("Categoria: " + categoria);
