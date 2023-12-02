@@ -55,6 +55,7 @@ public class GestorProductos implements IGestorProductos {
             }
             else {               
                 this.productos.add(p);
+                this.guardarEnArchivo();
                 return EXITO_CREADO;
             }            
         }
