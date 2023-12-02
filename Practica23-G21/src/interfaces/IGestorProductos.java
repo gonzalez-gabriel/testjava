@@ -13,12 +13,12 @@ import productos.modelos.*;
 public interface IGestorProductos { 
     public static final String EXITO_CREADO = "Producto creado/modificado exitosamente";
     public static final String EXITO_MODIFICADO = "Producto modificado exitosamente";
-    public static final String ERROR_CODIGO = "El código del producto es incorrecto";
-    public static final String ERROR_DESCRIPCION = "La descripción del producto es incorrecta";
+    public static final String ERROR_CODIGO = "El codigo del producto es incorrecto";
+    public static final String ERROR_DESCRIPCION = "La descripcion del producto es incorrecta";
     public static final String ERROR_PRECIO = "El precio del producto es incorrecto";
-    public static final String ERROR_CATEGORIA = "La categoría del producto es incorrecta";
+    public static final String ERROR_CATEGORIA = "La categoria del producto es incorrecta";
     public static final String ERROR_ESTADO = "El estado es incorrecto";
-    public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese código";
+    public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese codigo";
     public static final String VALIDACION_EXITO = "Los datos del producto son correctos";
     public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
     public static final String ERROR_BORRADO = "Este producto no puede borrarse porque esta en un pedido";

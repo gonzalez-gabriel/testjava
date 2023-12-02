@@ -30,7 +30,6 @@ public class GestorProductos implements IGestorProductos {
     
     
     private GestorProductos(){
-        this.leerArchivo();
     }
     
     public static GestorProductos instanciar(){
@@ -67,21 +66,23 @@ public class GestorProductos implements IGestorProductos {
     @Override
     public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         
+        if (this.productos.isEmpty()) {
+            leerArchivo();
+        }
+        
         if (!this.productos.isEmpty() && this.productos.contains(productoAModificar)) {   
             
             String validez = validarDatos(codigo,descripcion,precio,categoria,estado);
             
             if (validez.equals(VALIDACION_EXITO)) {
-     
             
                 int i = this.productos.indexOf(productoAModificar);
-                productoAModificar.AsignarCodigo(codigo);
                 productoAModificar.asignarDescripcion(descripcion);
                 productoAModificar.asignarPrecio(precio);
                 productoAModificar.asignarCategoria(categoria);
                 productoAModificar.asignarEstado(estado);
                 this.productos.set(i, productoAModificar);
-
+                guardarEnArchivo();
                 return EXITO_CREADO;
             
             }
@@ -129,6 +130,9 @@ public class GestorProductos implements IGestorProductos {
                 return p1.verDescripcion().compareTo(p2.verDescripcion());
                 }
         };
+        if (this.productos.isEmpty()) {
+            leerArchivo();
+        }
         Collections.sort(productos,catYDescComp);
         return this.productos;
     }
@@ -140,6 +144,9 @@ public class GestorProductos implements IGestorProductos {
             return null;
         }
         ArrayList<Producto> descripcionBuscada = new ArrayList<>();
+        if (this.productos.isEmpty()) {
+            leerArchivo();
+        }
         for(Producto p: productos){ 
             if (p.verDescripcion().equals(descripcion) || p.verDescripcion().startsWith(descripcion)) {
                 descripcionBuscada.add(p);
@@ -159,7 +166,9 @@ public class GestorProductos implements IGestorProductos {
   
     @Override
     public boolean existeEsteProducto (Producto producto){
-        
+        if (this.productos.isEmpty()) {
+            leerArchivo();
+        }
         return this.productos.contains(producto);
         
     }
@@ -167,7 +176,7 @@ public class GestorProductos implements IGestorProductos {
     @Override
     public String validarDatos (int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
         
-        if(codigo < 0){
+        if(codigo <= 0){
             return ERROR_CODIGO;
         }
 
@@ -194,6 +203,9 @@ public class GestorProductos implements IGestorProductos {
     public ArrayList <Producto> verProductosPorCategoria(Categoria categoria){
         
     ArrayList<Producto> categoriaBuscada = new ArrayList<>();
+    if (this.productos.isEmpty()) {
+            leerArchivo();
+        }
         for(Producto p: productos){ 
             if (p.verCategoria() == categoria) {
                 categoriaBuscada.add(p);
@@ -206,7 +218,9 @@ public class GestorProductos implements IGestorProductos {
   
     @Override
     public Producto obtenerProducto(Integer codigo){
-        
+        if (this.productos.isEmpty()) {
+            leerArchivo();
+        }
         for(Producto p: productos){
             if(p.verCodigo() == codigo){
                 return p;
@@ -230,19 +244,20 @@ public class GestorProductos implements IGestorProductos {
             }
         }
         this.productos.remove(producto);
+        guardarEnArchivo();
         return EXITO_BORRADO;
     }
     
     private void leerArchivo() {
-        BufferedReader br = null;
         File file = new File("./Productos.txt");
         
         if (file.exists()) {
             try {
                 FileReader fr = new FileReader(file);
-                br = new BufferedReader(fr);
-                while(br.readLine() != null) {
-                    String[] vector = br.readLine().split(",");
+                BufferedReader br = new BufferedReader(fr);
+                String linea;
+                while((linea = br.readLine()) != null) {
+                    String[] vector = linea.split(";");
                     int codigo = parseInt(vector[0]);
                     String descripcion = vector[1];
                     float precio = parseFloat(vector[2]);
@@ -251,19 +266,10 @@ public class GestorProductos implements IGestorProductos {
                     Producto p = new Producto(codigo,descripcion,categoria,estado,precio);
                     this.productos.add(p);
                 }
+                br.close();
             }
             catch (IOException ioe) {
                 System.out.println("No se pudo leer el archivo.");
-            }
-            finally {
-                if (br != null) {
-                    try {
-                        br.close();
-                    }
-                    catch (IOException ioe) {
-                        ioe.printStackTrace();
-                    }
-                }
             }
         }
     }

@@ -103,7 +103,7 @@ public class Producto {
     
     
     public void mostrar() {
-//        System.out.println("Producto: " + nombre);
+        System.out.println("Codigo: " + codigo);
         if (this.descripcion == null) {
             this.descripcion = "ERROR";
         }
