@@ -105,8 +105,7 @@ public class GestorUsuarios implements IGestorUsuarios {
         
         Collections.sort(apellidoBuscado, OrdenApellidoNombre);
         return apellidoBuscado;
-//
-//        return apellidoBuscado;
+
     }
 
     @Override

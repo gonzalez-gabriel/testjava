@@ -45,12 +45,12 @@ public class GestorPedidos implements IGestorPedidos {
     }
     
     @Override
-    public String crearPedido(int numero, LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente){
+    public String crearPedido(LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente){
         
-        String validez = validarDatos(numero,fecha,hora,productosDelPedido,cliente);
+        String validez = validarDatos(fecha,hora,productosDelPedido,cliente);
         
         if (validez.equals(VALIDACION_EXITO)) {
-            Pedido p = new Pedido(numero,LocalDateTime.of(fecha, hora),productosDelPedido,cliente);
+            Pedido p = new Pedido(pedidos.size()+1,LocalDateTime.of(fecha, hora),productosDelPedido,cliente);
             if (this.pedidos.contains(p)) {
                 p = null;
                 return PEDIDOS_DUPLICADOS;
@@ -137,11 +137,9 @@ public class GestorPedidos implements IGestorPedidos {
     }
     
     @Override
-    public String validarDatos (int numero, LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente) {
+    public String validarDatos (LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente) {
         
-        if (numero <= 0) {
-            return ERROR_NUMERO;
-        }
+        
         
         if (fecha == null) {
             return ERROR_FECHA;

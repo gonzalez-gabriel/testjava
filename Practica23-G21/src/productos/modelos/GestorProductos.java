@@ -30,7 +30,7 @@ public class GestorProductos implements IGestorProductos {
     
     
     private GestorProductos(){
-        this.leerArchivo();
+        leerArchivo();
     }
     
     public static GestorProductos instanciar(){
@@ -46,6 +46,7 @@ public class GestorProductos implements IGestorProductos {
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         
         String validez = validarDatos(codigo,descripcion,precio,categoria,estado);
+
         
         if (validez.equals(VALIDACION_EXITO)) {
             Producto p = new Producto(codigo,descripcion, categoria,estado,precio);
@@ -67,21 +68,21 @@ public class GestorProductos implements IGestorProductos {
     @Override
     public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         
+
+        
         if (!this.productos.isEmpty() && this.productos.contains(productoAModificar)) {   
             
             String validez = validarDatos(codigo,descripcion,precio,categoria,estado);
             
             if (validez.equals(VALIDACION_EXITO)) {
-     
             
                 int i = this.productos.indexOf(productoAModificar);
-//                productoAModificar.AsignarCodigo(codigo);
                 productoAModificar.asignarDescripcion(descripcion);
                 productoAModificar.asignarPrecio(precio);
                 productoAModificar.asignarCategoria(categoria);
                 productoAModificar.asignarEstado(estado);
                 this.productos.set(i, productoAModificar);
-
+                guardarEnArchivo();
                 return EXITO_CREADO;
             
             }
@@ -96,25 +97,7 @@ public class GestorProductos implements IGestorProductos {
             return PRODUCTO_INEXISTENTE;
         }
         
-        /*if(precio <= 0){
-            return ERROR_PRECIO;
-        }
         
-        if(categoria == null){
-            return ERROR_CATEGORIA;
-        }
-        
-        if(estado == null){
-            return ERROR_ESTADO;
-        }
-        
-        productoAModificar.AsignarCodigo(codigo);
-        productoAModificar.asignarCategoria(categoria);
-        productoAModificar.asignarDescripcion(descripcion);
-        productoAModificar.asignarEstado(estado);
-        productoAModificar.asignarPrecio(precio);
-        return EXITO_CREADO;
-        */
         
     }
 
@@ -129,6 +112,7 @@ public class GestorProductos implements IGestorProductos {
                 return p1.verDescripcion().compareTo(p2.verDescripcion());
                 }
         };
+
         Collections.sort(productos,catYDescComp);
         return this.productos;
     }
@@ -140,6 +124,7 @@ public class GestorProductos implements IGestorProductos {
             return null;
         }
         ArrayList<Producto> descripcionBuscada = new ArrayList<>();
+
         for(Producto p: productos){ 
             if (p.verDescripcion().equals(descripcion) || p.verDescripcion().startsWith(descripcion)) {
                 descripcionBuscada.add(p);
@@ -159,7 +144,7 @@ public class GestorProductos implements IGestorProductos {
   
     @Override
     public boolean existeEsteProducto (Producto producto){
-        
+
         return this.productos.contains(producto);
         
     }
@@ -194,6 +179,7 @@ public class GestorProductos implements IGestorProductos {
     public ArrayList <Producto> verProductosPorCategoria(Categoria categoria){
         
     ArrayList<Producto> categoriaBuscada = new ArrayList<>();
+
         for(Producto p: productos){ 
             if (p.verCategoria() == categoria) {
                 categoriaBuscada.add(p);
@@ -206,7 +192,7 @@ public class GestorProductos implements IGestorProductos {
   
     @Override
     public Producto obtenerProducto(Integer codigo){
-        
+
         for(Producto p: productos){
             if(p.verCodigo() == codigo){
                 return p;
@@ -217,6 +203,8 @@ public class GestorProductos implements IGestorProductos {
     
     @Override
     public String borrarProducto(Producto producto) {
+        
+
         GestorProductos gp = GestorProductos.instanciar();
         if (gp.menu().isEmpty()) {
             return ERROR_BORRADO;
@@ -229,20 +217,25 @@ public class GestorProductos implements IGestorProductos {
                 }
             }
         }
+        if(!productos.contains(producto)){
+            return ERROR_BORRADO;
+        }
+        
         this.productos.remove(producto);
+        guardarEnArchivo();
         return EXITO_BORRADO;
     }
     
     private void leerArchivo() {
-        BufferedReader br = null;
         File file = new File("./Productos.txt");
         
         if (file.exists()) {
             try {
                 FileReader fr = new FileReader(file);
-                br = new BufferedReader(fr);
-                while(br.readLine() != null) {
-                    String[] vector = br.readLine().split(";");
+                BufferedReader br = new BufferedReader(fr);
+                String linea;
+                while((linea = br.readLine()) != null) {
+                    String[] vector = linea.split(";");
                     int codigo = parseInt(vector[0]);
                     String descripcion = vector[1];
                     float precio = parseFloat(vector[2]);
@@ -251,19 +244,10 @@ public class GestorProductos implements IGestorProductos {
                     Producto p = new Producto(codigo,descripcion,categoria,estado,precio);
                     this.productos.add(p);
                 }
+                br.close();
             }
             catch (IOException ioe) {
                 System.out.println("No se pudo leer el archivo.");
-            }
-            finally {
-                if (br != null) {
-                    try {
-                        br.close();
-                    }
-                    catch (IOException ioe) {
-                        ioe.printStackTrace();
-                    }
-                }
             }
         }
     }
@@ -289,7 +273,7 @@ public class GestorProductos implements IGestorProductos {
             }
         } 
         catch (IOException ioe) {
-            System.out.println("Error al ");
+            System.out.println("Error al guardar en archivo ");
         }
         finally {
             if (bw != null) {

@@ -10,14 +10,13 @@ package productos.modelos;
  */
 public class Producto {
     private int codigo;
-//    private String nombre;
     private String descripcion;
     private float precio;
     private Estado estado;
     private Categoria categoria;
 
     public Producto( int codigo, String descripcion, Categoria categoria, Estado estado,  float precio) {
-//        this.nombre = nombre;
+
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.categoria = categoria;
@@ -29,14 +28,8 @@ public class Producto {
         return codigo;
     }
 
-//    public String verNombre() {
-//        return nombre;
-//    }
-//
-//    public void asignarNombre(String nombre) {
-//        this.nombre = nombre;
-//    }
-    public void AsignarCodigo(int codigo) {
+
+    public void asignarCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -103,7 +96,7 @@ public class Producto {
     
     
     public void mostrar() {
-//        System.out.println("Producto: " + nombre);
+        
         if (this.descripcion == null) {
             this.descripcion = "ERROR";
         }

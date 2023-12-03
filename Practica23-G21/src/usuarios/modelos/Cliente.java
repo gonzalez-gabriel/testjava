@@ -36,12 +36,7 @@ public class Cliente extends Usuario {
         int posicion = pedidos.indexOf(p);
         if (posicion >= 0) 
             pedidos.remove(posicion);
-//        for(Pedido aux : pedidos) {
-//            
-//                if (aux.equals(p)) {
-//                    pedidos.remove(aux);
-//                }
-//        }
+
     }
     
     @Override

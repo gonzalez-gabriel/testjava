@@ -103,6 +103,8 @@ public abstract class Usuario {
         }
         System.out.println(apellido + ", " + nombre);
         System.out.println("Correo: " + correo);
+        System.out.println("Perfil: " + perfil);
+        
     }
     
     public abstract List<Pedido> verPedidos();
